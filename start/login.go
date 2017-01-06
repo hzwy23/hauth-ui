@@ -12,8 +12,8 @@ import (
 	"github.com/hzwy23/hauth/rdbms"
 
 	"github.com/hzwy23/hauth/hret"
+	"github.com/hzwy23/hauth/token/hjwt"
 	"github.com/hzwy23/hauth/utils"
-	"github.com/hzwy23/hauth/utils/hjwt"
 )
 
 func indexPage(ctx *context.Context) {

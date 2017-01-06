@@ -3,13 +3,13 @@ package start
 import (
 	"html/template"
 
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"github.com/hzwy23/hauth/route"
 )
 
 func init() {
 
-	beego.Get("/", func(ctx *context.Context) {
+	route.Get("/", func(ctx *context.Context) {
 
 		huang, _ := template.ParseFiles("./views/login.tpl")
 

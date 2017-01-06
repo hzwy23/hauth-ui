@@ -13,7 +13,7 @@ import (
 	"github.com/astaxie/beego/context"
 	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
-	"github.com/hzwy23/hauth/utils/hjwt"
+	"github.com/hzwy23/hauth/token/hjwt"
 )
 
 type RoleUserRel struct {

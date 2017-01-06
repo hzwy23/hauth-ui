@@ -8,8 +8,8 @@ import (
 
 	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/logs"
+	"github.com/hzwy23/hauth/token/hjwt"
 	"github.com/hzwy23/hauth/utils"
-	"github.com/hzwy23/hauth/utils/hjwt"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"

@@ -5,15 +5,17 @@ import (
 
 	"net/http"
 
+	"github.com/astaxie/beego"
+
+	"github.com/astaxie/beego/context"
+
 	_ "github.com/hzwy23/hauth/start"
 
 	_ "github.com/hzwy23/hauth/rdbms"
 
-	"github.com/hzwy23/hauth/utils/hjwt"
+	"github.com/hzwy23/hauth/token/hjwt"
 
-	"github.com/astaxie/beego"
-
-	"github.com/astaxie/beego/context"
+	"github.com/hzwy23/hauth/route"
 
 	"github.com/hzwy23/hauth/logs"
 )
@@ -44,12 +46,12 @@ func RequireAuth(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	go redictToHtpps()
-	beego.InsertFilter("/v1/*", beego.BeforeRouter, func(ctx *context.Context) {
+	route.InsertFilter("/v1/*", beego.BeforeRouter, func(ctx *context.Context) {
 		cookie, err := ctx.Request.Cookie("Authorization")
 		if err != nil || !hjwt.CheckToken(cookie.Value) {
 			logs.Warn("have no authority. redirect to index")
 			RequireAuth(ctx.ResponseWriter, ctx.Request)
 		}
 	})
-	beego.Run()
+	route.Run()
 }

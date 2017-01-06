@@ -11,8 +11,8 @@ import (
 	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
+	"github.com/hzwy23/hauth/token/hjwt"
 	"github.com/hzwy23/hauth/utils"
-	"github.com/hzwy23/hauth/utils/hjwt"
 )
 
 type mSysOrgInfo struct {
