@@ -133,7 +133,7 @@ func init() {
 	smaxsize, _ := conf.Get("Hauth.log.maxsize")
 	daily, _ := conf.Get("Hauth.log.daily")
 	smaxdays, _ := conf.Get("Hauth.log.maxdays")
-
+	filename = strings.Replace(filename, "\\", "/", -1)
 	// set log config
 
 	err = Lg.SetLogger("file", `{"filename":"`+filename+`","maxlines":`+smaxlines+`,"maxsize":`+smaxsize+`,"daily":`+daily+`,"maxdays":`+smaxdays+`}`)

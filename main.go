@@ -44,7 +44,6 @@ func RequireAuth(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
 	go redictToHtpps()
 	route.InsertFilter("/v1/*", beego.BeforeRouter, func(ctx *context.Context) {
 		cookie, err := ctx.Request.Cookie("Authorization")

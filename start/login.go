@@ -67,7 +67,7 @@ func loginSystem(ctx *context.Context) {
 	}
 
 	orgid := ""
-	err = dbobj.QueryRow("SELECT org_unit_id FROM sys_user_info where user_id = ?", userId).Scan(&orgid)
+	err = dbobj.QueryRow(platform_resource_login_3, userId).Scan(&orgid)
 	if err != nil {
 		logs.Error(userId, " 用户没有指定的域", err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 401, "can't get org id of user")

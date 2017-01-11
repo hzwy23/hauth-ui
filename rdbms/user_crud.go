@@ -116,7 +116,6 @@ func (this *userHandle) Post() {
 	userEmail := this.Ctx.Request.FormValue("userEmail")
 	userPhone := this.Ctx.Request.FormValue("userPhone")
 	userOrgUnitId := this.Ctx.Request.FormValue("userOrgUnitId")
-	userDomainId := this.Ctx.Request.FormValue("domainId")
 	//
 	if !utils.ValidEmail(userEmail) {
 		hret.WriteHttpErrMsgs(this.Ctx.ResponseWriter, http.StatusExpectationFailed, "email account is not valid.please check your email address.", err)
@@ -167,13 +166,6 @@ func (this *userHandle) Post() {
 		return
 	}
 
-	_, err = tx.Exec(sys_rdbms_039, userId, userDomainId, jclaim.User_id)
-	if err != nil {
-		tx.Rollback()
-		logs.Error(err.Error())
-		hret.WriteHttpErrMsgs(this.Ctx.ResponseWriter, http.StatusExpectationFailed, "add new user failed. set user theme failed.", err)
-		return
-	}
 	//logs.LogToDB(r, owner, true, "新增用户成功")
 	tx.Commit()
 }

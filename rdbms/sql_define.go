@@ -340,4 +340,6 @@ var (
 	//argument:域编码
 	//return:域详细信息
 	sys_rdbms_067 = ""
+
+	sys_rdbms_068 = ""
 )

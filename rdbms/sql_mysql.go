@@ -11,8 +11,8 @@ func init() {
 		sys_rdbms_002 = `delete from sys_user_theme where user_id = ?`
 		sys_rdbms_003 = `insert into sys_user_theme values(?,?)`
 		sys_rdbms_004 = `update sys_user_theme set theme_id = ? where user_id = ?`
-		sys_rdbms_005 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,i.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.org_unit_id = f.org_unit_id where user_id = ?`
-		sys_rdbms_006 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,i.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.org_unit_id = f.org_unit_id `
+		sys_rdbms_005 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.id = f.org_unit_id where user_id = ?`
+		sys_rdbms_006 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.id = f.org_unit_id `
 		sys_rdbms_007 = `delete from sys_user_info where user_id = ?`
 		sys_rdbms_008 = `insert into sys_user_info(user_id,user_name,user_create_date,user_owner,user_email,user_phone,org_unit_id) values(?,?,now(),?,?,?,?)`
 		sys_rdbms_009 = `update sys_user_info set user_name = ?,user_email = ?,user_phone = ?,org_unit_id = ? where user_id = ?`
@@ -33,9 +33,8 @@ func init() {
 							from sys_user_info t  
 							inner join sys_sec_user u on t.user_id = u.user_id 
 							inner join sys_user_status_attr a on u.status_id = a.status_id 
-							inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-							left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-							left join sys_domain_info di on dr.domain_id = di.domain_id 
+							inner join sys_org_info i on i.id = t.org_unit_id 
+							left join sys_domain_info di on i.domain_id = di.domain_id 
 							where 
 							t.user_id <> ? and
 							exists (
@@ -51,14 +50,13 @@ func init() {
 							    and s.org_unit_id = i.org_unit_id
 							)`
 		sys_rdbms_017 = `select t.user_id,t.user_name,a.status_desc,t.user_create_date,
-							t.user_owner,t.user_email,t.user_phone,t.org_unit_id,i.org_unit_desc,
-							dr.domain_id,di.domain_name,t.user_maintance_date,t.user_maintance_user 
+							t.user_owner,t.user_email,t.user_phone,i.org_unit_id,i.org_unit_desc,
+							di.domain_id,di.domain_name,t.user_maintance_date,t.user_maintance_user 
 							from sys_user_info t  
 							inner join sys_sec_user u on t.user_id = u.user_id 
 							inner join sys_user_status_attr a on u.status_id = a.status_id 
-							inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-							left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-							left join sys_domain_info di on dr.domain_id = di.domain_id 
+							inner join sys_org_info i on i.id = t.org_unit_id 
+							left join sys_domain_info di on i.domain_id = di.domain_id 
 							where 
 							t.user_id <> ? and
 							exists (
@@ -124,7 +122,6 @@ func init() {
 		sys_rdbms_036 = `insert into sys_domain_info(domain_id,domain_name,domain_up_id,domain_status_id,domain_create_date,domain_owner,domain_maintance_date,domain_maintance_user) values(?,?,?,?,now(),?,now(),?)`
 		sys_rdbms_037 = `delete from sys_domain_info where domain_id = ?`
 		sys_rdbms_038 = `update sys_domain_info set domain_name = ?, domain_up_id=?, domain_status_id = ?, domain_maintance_date = now(), domain_maintance_user = ? where domain_id = ?`
-		sys_rdbms_039 = `insert into sys_user_domain_rel(uuid,user_id,domain_id,maintance_date,grant_user_id) values(uuid(),?,?,now(),?)`
 		sys_rdbms_040 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE limit ?,?`
 
 		sys_rdbms_041 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user 
@@ -155,7 +152,7 @@ func init() {
 											    and s.org_status_id = '0'
 											    and s.org_unit_id = t.org_unit_id
 										)`
-		sys_rdbms_043 = `insert into sys_org_info(org_unit_id,org_unit_desc,up_org_id,org_status_id,domain_id,start_date,end_date,create_date,maintance_date,create_user,maintance_user) values(?,?,?,?,?,?,?,now(),now(),?,?)`
+		sys_rdbms_043 = `insert into sys_org_info(org_unit_id,org_unit_desc,up_org_id,org_status_id,domain_id,start_date,end_date,create_date,maintance_date,create_user,maintance_user,id) values(?,?,?,?,?,?,?,now(),now(),?,?,?)`
 		sys_rdbms_044 = `delete from sys_org_info where org_unit_id = ?`
 		sys_rdbms_045 = `delete from sys_role_user_relation where user_id = ?`
 		sys_rdbms_046 = `select t.role_id,t.role_name
@@ -180,8 +177,7 @@ func init() {
 		sys_rdbms_049 = `select count(*)
 									from sys_user_info t  
 									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
@@ -193,52 +189,48 @@ func init() {
 
 		sys_rdbms_051 = `select t.user_id,t.user_name,i.org_unit_desc
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.org_unit_id = t.id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
+									    and s.org_unit_id = i.org_unit_id
 									) limit ?,?`
 		sys_rdbms_052 = `select count(*)
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
+									    and s.org_unit_id = i.org_unit_id
 									)`
 
-		sys_rdbms_053 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,t.Org_unit_id,i.org_unit_desc,dr.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
+		sys_rdbms_053 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,i.Org_unit_id,i.org_unit_desc,di.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
+									    and s.org_unit_id = i.org_unit_id
 									) limit ?,?`
-		sys_rdbms_054 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,t.Org_unit_id,i.org_unit_desc,dr.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
+		sys_rdbms_054 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,i.Org_unit_id,i.org_unit_desc,di.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
 										SELECT 1 from sys_domain_info s
@@ -250,9 +242,8 @@ func init() {
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
 										SELECT 1 from sys_domain_info s
@@ -262,9 +253,8 @@ func init() {
 									)`
 		sys_rdbms_056 = `select t.user_id,t.user_name,i.org_unit_desc
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
 										SELECT 1 from sys_domain_info s
@@ -276,39 +266,36 @@ func init() {
 		sys_rdbms_057 = `
 									select t.user_id,t.user_name,i.org_unit_desc
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ? 
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
+									    and s.org_unit_id = i.org_unit_id
 									) limit ?,?`
 		sys_rdbms_058 = `select t.user_id,t.user_name,di.domain_name
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and 
 									exists (
 										SELECT domain_id from sys_domain_info s
 										where FIND_IN_SET(s.domain_id,getChildDomainList(?))
 										and di.domain_id = s.domain_id
-									) and t.org_unit_id = ?
+									) and i.org_unit_id = ?
 									limit ?,?`
 		sys_rdbms_059 = `select count(*)
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and 
 									exists (
 										SELECT domain_id from sys_domain_info s
 										where FIND_IN_SET(s.domain_id,getChildDomainList(?))
 										and di.domain_id = s.domain_id
-									) and t.org_unit_id = ?`
+									) and i.org_unit_id = ?`
 
 		sys_rdbms_060 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user 
 								FROM sys_org_info t
@@ -339,71 +326,67 @@ func init() {
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
-									) and t.org_unit_id = ?`
+									    and s.org_unit_id = i.org_unit_id
+									) and i.org_unit_id = ?`
 		sys_rdbms_063 = `select count(*)
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
 										SELECT 1 from sys_domain_info s
 										where FIND_IN_SET(s.domain_id,getChildDomainList(?))
 										and di.domain_id = s.domain_id
 										and s.domain_id = ?
-									) and t.org_unit_id = ?`
-		sys_rdbms_064 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,t.Org_unit_id,i.org_unit_desc,dr.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
+									) and i.org_unit_id = ?`
+		sys_rdbms_064 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,i.Org_unit_id,i.org_unit_desc,di.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
-									) and t.org_unit_id = ? limit ?,?`
-		sys_rdbms_065 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,t.Org_unit_id,i.org_unit_desc,dr.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
+									    and s.org_unit_id = i.org_unit_id
+									) and i.org_unit_id = ? limit ?,?`
+		sys_rdbms_065 = `select t.user_id,t.user_name,ra.status_desc,t.user_create_date,t.User_owner,t.User_email,t.User_phone,i.Org_unit_id,i.org_unit_desc,di.Domain_id,di.domain_name,t.User_maintance_date,t.User_maintance_user
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
 										SELECT 1 from sys_domain_info s
 										where FIND_IN_SET(s.domain_id,getChildDomainList(?))
 										and di.domain_id = s.domain_id
 										and s.domain_id = ?
-									) and t.org_unit_id = ? limit ?,?`
+									) and i.org_unit_id = ? limit ?,?`
 		sys_rdbms_066 = `select count(*)
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
-									left join sys_user_domain_rel dr on t.user_id = dr.user_id 
-									left join sys_domain_info di on dr.domain_id = di.domain_id 
+									inner join sys_org_info i on i.id = t.org_unit_id 
+									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
 									    SELECT 1 from sys_org_info s
 									    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
 									    and s.org_status_id = '0'
-									    and s.org_unit_id = t.org_unit_id
+									    and s.org_unit_id = i.org_unit_id
 									)`
 		sys_rdbms_067 = `SELECT domain_id,domain_name,domain_up_id,domain_status_id from sys_domain_info s where FIND_IN_SET(s.domain_id,getChildDomainList(?))`
-
+		sys_rdbms_068 = `select user_id from sys_user_info where user_id = ?`
+		sys_rdbms_039 = ``
 	}
 }
