@@ -29,6 +29,7 @@ type mSysOrgInfo struct {
 	Maintance_date  string `json:"Maintance_date"`
 	Create_user     string `json:"Create_user"`
 	Maintance_user  string `json:"Maintance_user"`
+	Code_number     string `json:"Code_number"`
 	Org_dept        string `json:"Org_dept,omitempty"`
 }
 
@@ -100,7 +101,33 @@ func deleteOrgInfo(ctx *context.Context) {
 }
 
 func updateOrgInfo(ctx *context.Context) {
+	ctx.Request.ParseForm()
+	cookie, _ := ctx.Request.Cookie("Authorization")
+	jclaim, err := hjwt.ParseJwt(cookie.Value)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+		return
+	}
+	org_unit_id := ctx.Request.FormValue("Id")
+	org_unit_desc := ctx.Request.FormValue("Org_unit_desc")
+	up_org_id := ctx.Request.FormValue("Up_org_id")
+	start_date := ctx.Request.FormValue("Start_date")
+	end_date := ctx.Request.FormValue("End_date")
 
+	maintance_user := jclaim.User_id
+	org_status_id := 0
+	if utils.AGTEB(start_date, end_date) {
+		org_status_id = 1
+	}
+	err = dbobj.Exec(sys_rdbms_069, org_unit_desc, up_org_id, org_status_id,
+		start_date, end_date, maintance_user, org_unit_id)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "modify org info failed.", err)
+		return
+	}
+	hret.WriteHttpOkMsgs(ctx.ResponseWriter, "modify org info successfully")
 }
 
 func insertOrgInfo(ctx *context.Context) {
@@ -118,6 +145,7 @@ func insertOrgInfo(ctx *context.Context) {
 	domain_id := ctx.Request.FormValue("Domain_id")
 	start_date := ctx.Request.FormValue("Start_date")
 	end_date := ctx.Request.FormValue("End_date")
+	id := domain_id + "_join_" + org_unit_id
 	create_user := jclaim.User_id
 	maintance_user := jclaim.User_id
 	org_status_id := 0
@@ -126,7 +154,7 @@ func insertOrgInfo(ctx *context.Context) {
 	}
 
 	err = dbobj.Exec(sys_rdbms_043, org_unit_id, org_unit_desc, up_org_id, org_status_id,
-		domain_id, start_date, end_date, create_user, maintance_user)
+		domain_id, start_date, end_date, create_user, maintance_user, id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "add new org info failed.", err)

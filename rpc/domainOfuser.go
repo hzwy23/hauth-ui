@@ -32,6 +32,45 @@ func FindDomain(d []DomainInfo, id string) bool {
 	return false
 }
 
+func GetParentDomainAndSubDomain(ctx *context.Context) ([]DomainInfo, error) {
+	r := ctx.Request
+	r.ParseForm()
+	cookie, _ := ctx.Request.Cookie("Authorization")
+	jclaim, err := hjwt.ParseJwt(cookie.Value)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+		return nil, err
+	}
+
+	rows, err := dbobj.Query(sys_rpc_002, jclaim.Domain_id)
+	defer rows.Close()
+	if err != nil {
+		logs.Error("query data error.", dbobj.GetErrorMsg(err))
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
+		return nil, err
+	}
+
+	//	var oneLine ProjectMgr
+	var rst []DomainInfo
+	err = dbobj.Scan(rows, &rst)
+	if err != nil {
+		logs.Error("query data error.", dbobj.GetErrorMsg(err))
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
+		return nil, err
+	}
+
+	var ret []DomainInfo
+	for _, val := range getDomainTops(rst) {
+		var tmp []DomainInfo
+		dtree(rst, val.Domain_id, 2, &tmp)
+		val.Domain_dept = "1"
+		ret = append(ret, val)
+		ret = append(ret, tmp...)
+	}
+	return ret, nil
+}
+
 func GetDomainsOfUser(ctx *context.Context) ([]DomainInfo, error) {
 	r := ctx.Request
 	r.ParseForm()

@@ -2,6 +2,7 @@ package hret
 
 import (
 	"encoding/json"
+
 	"net/http"
 	"strconv"
 
@@ -52,6 +53,10 @@ func WriteJson(w http.ResponseWriter, data interface{}) {
 		logs.Error(err)
 		w.WriteHeader(http.StatusExpectationFailed)
 		w.Write([]byte(`{error_code:765,error_msg:"` + err.Error() + `",error_details:"format json type info failed."}`))
+		return
+	}
+	if string(ijs) == "null" {
+		w.Write([]byte("[]"))
 		return
 	}
 	w.Write(ijs)

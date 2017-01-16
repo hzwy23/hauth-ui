@@ -25,6 +25,7 @@ type usersOfDomain struct {
 	User_id       string
 	User_name     string
 	Org_unit_desc string
+	Domain_name   string
 }
 
 type UserInfo struct {
@@ -116,6 +117,7 @@ func (this *userHandle) Post() {
 	userEmail := this.Ctx.Request.FormValue("userEmail")
 	userPhone := this.Ctx.Request.FormValue("userPhone")
 	userOrgUnitId := this.Ctx.Request.FormValue("userOrgUnitId")
+
 	//
 	if !utils.ValidEmail(userEmail) {
 		hret.WriteHttpErrMsgs(this.Ctx.ResponseWriter, http.StatusExpectationFailed, "email account is not valid.please check your email address.", err)

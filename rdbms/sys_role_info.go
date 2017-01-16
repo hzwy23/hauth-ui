@@ -17,7 +17,7 @@ import (
 )
 
 type RoleInfo struct {
-	Role_id             string
+	Code_number         string
 	Role_name           string
 	Role_owner          string
 	Role_create_date    string
@@ -27,6 +27,7 @@ type RoleInfo struct {
 	Domain_desc         string
 	Role_maintance_date string
 	Role_maintance_user string
+	Role_id             string
 }
 
 func getRoleInfoPage(ctx *context.Context) {
@@ -72,7 +73,7 @@ func postRoleInfo(ctx *context.Context) {
 	rolename := ctx.Request.FormValue("role_name")
 	domainid := ctx.Request.FormValue("domain_id")
 	rolestatus := ctx.Request.FormValue("role_status")
-
+	id := domainid + "_join_" + roleid
 	cookie, _ := ctx.Request.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
 	if err != nil {
@@ -92,7 +93,7 @@ func postRoleInfo(ctx *context.Context) {
 		return
 	}
 
-	err = dbobj.Exec(sys_rdbms_026, roleid, rolename, jclaim.User_id, rolestatus, domainid, jclaim.User_id)
+	err = dbobj.Exec(sys_rdbms_026, id, rolename, jclaim.User_id, rolestatus, domainid, jclaim.User_id, roleid)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "add new role info failed.", err)

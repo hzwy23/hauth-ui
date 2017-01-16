@@ -74,10 +74,47 @@ func verifyCode(ctx *context.Context) {
 	}
 }
 
+func noVerifyRegister(ctx *context.Context) {
+	ctx.Request.ParseForm()
+	phone_number := ctx.Request.FormValue("inputPhoneNumber")
+	pd := ctx.Request.FormValue("inputPassword")
+	cpd := ctx.Request.FormValue("inputConfirmPassword")
+	if pd != cpd {
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 405, "两次输入密码不一致")
+		return
+	}
+
+	msg, err := addDomain(phone_number)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 404, "用户已经被注册", err)
+		return
+	}
+	msg, err = addOrg(phone_number)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 404, "register org failed.", err)
+		return
+	}
+	msg, err = addUser(phone_number, pd)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 404, "register user failed.", err)
+		return
+	}
+	msg, err = addrole(phone_number)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 404, "register role failed.", err)
+		return
+	}
+	hret.WriteHttpOkMsgs(ctx.ResponseWriter, msg)
+}
+
 func addDomain(phone string) (string, error) {
 	domainId := phone
 	domainDesc := phone
-	domainUpId := "-1"
+	domainUpId := "devops_product"
 	domainStatus := 0
 	err := dbobj.Exec(sys_rdbms_036, domainId, domainDesc, domainUpId, domainStatus, "network", "network")
 	if err != nil {
@@ -159,7 +196,7 @@ func addUser(userid string, password string) (string, error) {
 
 func addrole(phone string) (string, error) {
 	maintanceDate := time.Now().Format("2006-01-02")
-	err := dbobj.Exec(sys_rdbms_024, "masftp", phone, maintanceDate, "network")
+	err := dbobj.Exec(sys_rdbms_024, "devops_product_join_networkadmin", phone, maintanceDate, "network")
 	if err != nil {
 		logs.Error(err)
 		return "add role failed.", err
@@ -171,4 +208,5 @@ func init() {
 	beego.Get("/plat/registerPage", httpRegisterPage)
 	beego.Post("/plat/register/sendCode", getVerifyCode)
 	beego.Post("/plat/register/verifyCode", verifyCode)
+	beego.Post("/plat/register", noVerifyRegister)
 }

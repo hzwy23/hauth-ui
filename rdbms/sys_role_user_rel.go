@@ -23,6 +23,7 @@ type RoleUserRel struct {
 	Role_name      string
 	Maintance_date string
 	Maintance_user string
+	Code_number    string
 }
 
 func getRoleUserPage(ctx *context.Context) {
@@ -54,7 +55,8 @@ func getRoleUserRel(ctx *context.Context) {
 			&one.Role_id,
 			&one.Role_name,
 			&one.Maintance_date,
-			&one.Maintance_user)
+			&one.Maintance_user,
+			&one.Code_number)
 		if err != nil {
 			logs.Error(err)
 			return

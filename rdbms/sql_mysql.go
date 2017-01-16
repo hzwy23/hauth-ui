@@ -11,8 +11,8 @@ func init() {
 		sys_rdbms_002 = `delete from sys_user_theme where user_id = ?`
 		sys_rdbms_003 = `insert into sys_user_theme values(?,?)`
 		sys_rdbms_004 = `update sys_user_theme set theme_id = ? where user_id = ?`
-		sys_rdbms_005 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.id = f.org_unit_id where user_id = ?`
-		sys_rdbms_006 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.id = f.org_unit_id `
+		sys_rdbms_005 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.org_unit_id = f.org_unit_id where user_id = ?`
+		sys_rdbms_006 = `SELECT i.user_id,i.user_name,i.user_create_date,i.user_owner,i.user_email,i.user_phone,f.org_unit_id,f.org_unit_desc,up_org_id,f.org_status_id FROM sys_user_info i left join sys_org_info f on i.org_unit_id = f.org_unit_id `
 		sys_rdbms_007 = `delete from sys_user_info where user_id = ?`
 		sys_rdbms_008 = `insert into sys_user_info(user_id,user_name,user_create_date,user_owner,user_email,user_phone,org_unit_id) values(?,?,now(),?,?,?,?)`
 		sys_rdbms_009 = `update sys_user_info set user_name = ?,user_email = ?,user_phone = ?,org_unit_id = ? where user_id = ?`
@@ -33,7 +33,7 @@ func init() {
 							from sys_user_info t  
 							inner join sys_sec_user u on t.user_id = u.user_id 
 							inner join sys_user_status_attr a on u.status_id = a.status_id 
-							inner join sys_org_info i on i.id = t.org_unit_id 
+							inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 							left join sys_domain_info di on i.domain_id = di.domain_id 
 							where 
 							t.user_id <> ? and
@@ -55,7 +55,7 @@ func init() {
 							from sys_user_info t  
 							inner join sys_sec_user u on t.user_id = u.user_id 
 							inner join sys_user_status_attr a on u.status_id = a.status_id 
-							inner join sys_org_info i on i.id = t.org_unit_id 
+							inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 							left join sys_domain_info di on i.domain_id = di.domain_id 
 							where 
 							t.user_id <> ? and
@@ -76,18 +76,20 @@ func init() {
 		sys_rdbms_019 = `insert into sys_sec_user(user_id,user_passwd,status_id) values(?,?,?)`
 		sys_rdbms_020 = `update sys_sec_user t set t.status_id = ?,continue_error_cnt = 0 where t.user_id = ?`
 		sys_rdbms_021 = `update SYS_USER_INFO t set t.user_name = ?, t.user_phone = ?, t.user_email = ? ,t.user_maintance_date = now(), t.user_maintance_user = ? where t.user_id = ?`
-		sys_rdbms_022 = `SELECT T.UUID,T.User_id,t.Role_id,i.Role_name,t.maintance_date,t.maintance_user FROM sys_role_user_relation T INNER JOIN SYS_ROLE_INFO I ON T.ROLE_ID = I.ROLE_ID where t.user_id = ? limit ?,?`
+		sys_rdbms_022 = `SELECT T.UUID,T.User_id,t.Role_id,i.Role_name,t.maintance_date,t.maintance_user,i.code_number FROM sys_role_user_relation T INNER JOIN SYS_ROLE_INFO I ON T.ROLE_ID = I.ROLE_ID where t.user_id = ? limit ?,?`
 		sys_rdbms_023 = `select count(*) from sys_role_user_relation T INNER JOIN SYS_ROLE_INFO I ON T.ROLE_ID = I.ROLE_ID where t.user_id = ?`
 		sys_rdbms_024 = `insert into sys_role_user_relation(uuid,role_id,user_id,maintance_date,maintance_user) values(uuid(),?,?,str_to_date(?,'%Y-%m-%d'),?)`
 		sys_rdbms_025 = `delete from  sys_role_user_relation where uuid = ?`
-		sys_rdbms_026 = `insert into sys_role_info(role_id,role_name,role_owner,role_create_date,role_status_id,domain_id,role_maintance_date,role_maintance_user) values(?,?,?,now(),?,?,now(),?)`
+		sys_rdbms_026 = `insert into sys_role_info(role_id,role_name,role_owner,role_create_date,role_status_id,domain_id,role_maintance_date,role_maintance_user,code_number) values(?,?,?,now(),?,?,now(),?,?)`
 		sys_rdbms_027 = `delete from  sys_role_info where role_id = ?`
-		sys_rdbms_028 = `select  t.role_id,t.role_name,t.role_owner,t.role_create_date,a.role_status_desc,a.role_status_id,t.domain_id,o.domain_name,t.role_maintance_date,t.role_maintance_user
+		sys_rdbms_028 = `select  t.code_number,t.role_name,t.role_owner,t.role_create_date,a.role_status_desc,a.role_status_id,t.domain_id,o.domain_name,t.role_maintance_date,t.role_maintance_user,t.role_id
 								from sys_role_info t 
 								inner join sys_role_status_attr a on t.role_status_id = a.role_status_id
 								inner join sys_domain_info o on t.domain_id = o.domain_id
-								inner join sys_role_user_relation n on t.role_id <> n.role_id and n.user_id = ?
-								where exists (
+								where not exists(
+                                    SELECT 1 FROM sys_role_user_relation s 
+                                    where user_id = ? and t.role_id = s.role_id
+                                ) and exists (
 									SELECT domain_id from sys_domain_info s
 									where FIND_IN_SET(s.domain_id,getChildDomainList(?))
 									and t.domain_id = s.domain_id  
@@ -152,17 +154,17 @@ func init() {
 											    and s.org_status_id = '0'
 											    and s.org_unit_id = t.org_unit_id
 										)`
-		sys_rdbms_043 = `insert into sys_org_info(org_unit_id,org_unit_desc,up_org_id,org_status_id,domain_id,start_date,end_date,create_date,maintance_date,create_user,maintance_user,id) values(?,?,?,?,?,?,?,now(),now(),?,?,?)`
+		sys_rdbms_043 = `insert into sys_org_info(code_number,org_unit_desc,up_org_id,org_status_id,domain_id,start_date,end_date,create_date,maintance_date,create_user,maintance_user,org_unit_id) values(?,?,?,?,?,?,?,now(),now(),?,?,?)`
 		sys_rdbms_044 = `delete from sys_org_info where org_unit_id = ?`
 		sys_rdbms_045 = `delete from sys_role_user_relation where user_id = ?`
-		sys_rdbms_046 = `select t.role_id,t.role_name
+		sys_rdbms_046 = `select t.role_id,t.role_name,t.code_number
 							from sys_role_info t 
 							where ( t.role_owner = ? or 
 							exists (
 								select 1 from sys_role_user_relation r
 							    where r.user_id = ? and t.role_id = r.role_id
 							))`
-		sys_rdbms_047 = ` select t.role_id,t.role_name
+		sys_rdbms_047 = ` select t.role_id,t.role_name,t.code_number
 							from sys_role_info t 
 							where ( t.role_owner = ? or 
 							exists (
@@ -187,9 +189,9 @@ func init() {
 									)`
 		sys_rdbms_050 = `update sys_role_info t set t.role_name = ? ,t.role_status_id = ? where t.role_id = ?`
 
-		sys_rdbms_051 = `select t.user_id,t.user_name,i.org_unit_desc
+		sys_rdbms_051 = `select t.user_id,t.user_name,i.org_unit_desc,di.domain_name
 									from sys_user_info t  
-									inner join sys_org_info i on i.org_unit_id = t.id 
+									inner join sys_org_info i on t.org_unit_id = i.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -202,7 +204,7 @@ func init() {
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -216,7 +218,7 @@ func init() {
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -229,7 +231,7 @@ func init() {
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
@@ -242,7 +244,7 @@ func init() {
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
@@ -251,9 +253,9 @@ func init() {
 										and di.domain_id = s.domain_id
 										and s.domain_id = ?
 									)`
-		sys_rdbms_056 = `select t.user_id,t.user_name,i.org_unit_desc
+		sys_rdbms_056 = `select t.user_id,t.user_name,i.org_unit_desc,di.domain_name
 									from sys_user_info t  
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
@@ -266,7 +268,7 @@ func init() {
 		sys_rdbms_057 = `
 									select t.user_id,t.user_name,i.org_unit_desc
 									from sys_user_info t  
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ? 
 									and exists (
@@ -277,7 +279,7 @@ func init() {
 									) limit ?,?`
 		sys_rdbms_058 = `select t.user_id,t.user_name,di.domain_name
 									from sys_user_info t  
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and 
 									exists (
@@ -288,7 +290,7 @@ func init() {
 									limit ?,?`
 		sys_rdbms_059 = `select count(*)
 									from sys_user_info t  
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and 
 									exists (
@@ -297,14 +299,13 @@ func init() {
 										and di.domain_id = s.domain_id
 									) and i.org_unit_id = ?`
 
-		sys_rdbms_060 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user 
+		sys_rdbms_060 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user,t.code_number
 								FROM sys_org_info t
 								inner join sys_domain_info i on t.domain_id = i.domain_id
 								inner join sys_org_status_attr r on t.org_status_id = r.org_status_id
 								where exists (
 								    SELECT 1 from sys_org_info s
-								    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?)) 
-								    and s.org_status_id = '0'
+								    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?))
 								    and s.org_unit_id = t.org_unit_id
 								) and  exists (
 									SELECT 1 from sys_domain_info s
@@ -312,7 +313,7 @@ func init() {
 									and t.domain_id = s.domain_id
 								    and s.domain_id = ?
 								) `
-		sys_rdbms_061 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user 
+		sys_rdbms_061 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user,t.code_number 
 								FROM sys_org_info t
 								inner join sys_domain_info i on t.domain_id = i.domain_id
 								inner join sys_org_status_attr r on t.org_status_id = r.org_status_id
@@ -326,7 +327,7 @@ func init() {
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -339,7 +340,7 @@ func init() {
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
@@ -352,7 +353,7 @@ func init() {
 									from sys_user_info t
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -365,7 +366,7 @@ func init() {
 									from sys_user_info t  
                                     inner join sys_sec_user u on t.user_id = u.user_id
                                     inner join sys_user_status_attr ra on ra.status_id = u.status_id
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ?
                                     and exists (
@@ -376,7 +377,7 @@ func init() {
 									) and i.org_unit_id = ? limit ?,?`
 		sys_rdbms_066 = `select count(*)
 									from sys_user_info t  
-									inner join sys_org_info i on i.id = t.org_unit_id 
+									inner join sys_org_info i on i.org_unit_id = t.org_unit_id 
 									left join sys_domain_info di on i.domain_id = di.domain_id 
 									where t.user_id <> ? and di.domain_id = ?
 									and exists (
@@ -387,6 +388,7 @@ func init() {
 									)`
 		sys_rdbms_067 = `SELECT domain_id,domain_name,domain_up_id,domain_status_id from sys_domain_info s where FIND_IN_SET(s.domain_id,getChildDomainList(?))`
 		sys_rdbms_068 = `select user_id from sys_user_info where user_id = ?`
-		sys_rdbms_039 = ``
+		sys_rdbms_039 = `update sys_user_info set org_unit_id = ?,user_maintance_date = now(),user_maintance_user = ? where user_id = ?`
+		sys_rdbms_069 = `update sys_org_info set org_unit_desc = ? ,up_org_id = ?,org_status_id = ? ,start_date = str_to_date(?,'%Y-%m-%d'), end_date = str_to_date(?,'%Y-%m-%d'),maintance_date = now(),maintance_user=? where org_unit_id = ?`
 	}
 }

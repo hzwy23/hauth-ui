@@ -12,8 +12,9 @@ import (
 )
 
 type gettedRoles struct {
-	Role_id   string `json:"role_id"`
-	Role_name string `json:"role_name"`
+	Role_id     string `json:"role_id"`
+	Role_name   string `json:"role_name"`
+	Code_number string `json:"code_number"`
 }
 
 func getGettedRoles(ctx *context.Context) {

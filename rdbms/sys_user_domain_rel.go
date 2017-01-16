@@ -17,7 +17,7 @@ func userDomainupdate(ctx *context.Context) {
 	user_id := ctx.Request.FormValue("userId")
 	domain_id := ctx.Request.FormValue("domainId")
 	org_id := ctx.Request.FormValue("orgId")
-
+	orgid := domain_id + "_join_" + org_id
 	if org_id == "" || domain_id == "" {
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 313, "domain_id or org_id is empty.please check values.")
 		return
@@ -37,20 +37,8 @@ func userDomainupdate(ctx *context.Context) {
 	}
 
 	tx, _ := dbobj.Begin()
-	sql := `update sys_user_domain_rel set domain_id = ?,maintance_date = NOW(),grant_user_id = ? where user_id = ?`
 
-	_, err = tx.Exec(sql, domain_id, jclaim.User_id, user_id)
-	if err != nil {
-		tx.Rollback()
-		logs.Error(err)
-		ctx.ResponseWriter.WriteHeader(http.StatusForbidden)
-		ctx.ResponseWriter.Write([]byte("修改用户所属于失败"))
-		return
-	}
-
-	sql = `update sys_user_info set org_unit_id = ?,user_maintance_date = now(),user_maintance_user = ? where user_id = ?`
-
-	_, err = tx.Exec(sql, org_id, jclaim.User_id, user_id)
+	_, err = tx.Exec(sys_rdbms_039, orgid, jclaim.User_id, user_id)
 	if err != nil {
 		tx.Rollback()
 		logs.Error(err)

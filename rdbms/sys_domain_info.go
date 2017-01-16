@@ -136,18 +136,27 @@ func deleteDomainInfo(ctx *context.Context) {
 
 		err = dbobj.Scan(rows, &tmp)
 		if err != nil {
+			logs.Error(err)
 			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 312, "get subdomain info failed.", err)
+			return
+		}
+		tx, err := dbobj.Begin()
+		if err != nil {
+			logs.Error(err)
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 313, "get subdomain info failed.", err)
 			return
 		}
 
 		for _, id := range tmp {
-			err := dbobj.Exec(sys_rdbms_037, id.Project_id)
+			_, err := tx.Exec(sys_rdbms_037, id.Project_id)
 			if err != nil {
 				logs.Error(err)
-				ctx.ResponseWriter.WriteHeader(http.StatusExpectationFailed)
-				ctx.ResponseWriter.Write([]byte("删除域失败" + val.Project_id))
+				hret.WriteHttpErrMsgs(ctx.ResponseWriter, 313, "删除域 "+val.Project_id+" 失败。", err)
+				tx.Rollback()
+				return
 			}
 		}
+		tx.Commit()
 	}
 }
 
