@@ -9,8 +9,8 @@ import (
 	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
+	"github.com/hzwy23/hauth/netease"
 	"github.com/hzwy23/hauth/utils"
-	"github.com/hzwy23/netease"
 )
 
 var retcode = map[int]string{
