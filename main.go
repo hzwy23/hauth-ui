@@ -31,6 +31,5 @@ func main() {
 			RequireAuth(ctx.ResponseWriter, ctx.Request)
 		}
 	})
-
 	route.Run()
 }

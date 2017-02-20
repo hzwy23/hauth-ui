@@ -4,14 +4,12 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/astaxie/beego/context"
 	"github.com/hzwy23/dbobj"
-	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
 	"github.com/hzwy23/hauth/token/hjwt"
 )
 
-type DomainInfo struct {
+type rpcDomainInfo struct {
 	Domain_id        string
 	Domain_name      string
 	Domain_up_id     string
@@ -23,7 +21,7 @@ type DomainInfo struct {
 	Domain_dept      string
 }
 
-func FindDomain(d []DomainInfo, id string) bool {
+func FindDomain(d []rpcDomainInfo, id string) bool {
 	for _, val := range d {
 		if val.Domain_id == id {
 			return true
@@ -32,14 +30,12 @@ func FindDomain(d []DomainInfo, id string) bool {
 	return false
 }
 
-func GetParentDomainAndSubDomain(ctx *context.Context) ([]DomainInfo, error) {
-	r := ctx.Request
+func GetParentAndSubDomains(r *http.Request) ([]rpcDomainInfo, error) {
 	r.ParseForm()
-	cookie, _ := ctx.Request.Cookie("Authorization")
+	cookie, _ := r.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
 	if err != nil {
 		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
 		return nil, err
 	}
 
@@ -47,22 +43,20 @@ func GetParentDomainAndSubDomain(ctx *context.Context) ([]DomainInfo, error) {
 	defer rows.Close()
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
 		return nil, err
 	}
 
 	//	var oneLine ProjectMgr
-	var rst []DomainInfo
+	var rst []rpcDomainInfo
 	err = dbobj.Scan(rows, &rst)
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
 		return nil, err
 	}
 
-	var ret []DomainInfo
+	var ret []rpcDomainInfo
 	for _, val := range getDomainTops(rst) {
-		var tmp []DomainInfo
+		var tmp []rpcDomainInfo
 		dtree(rst, val.Domain_id, 2, &tmp)
 		val.Domain_dept = "1"
 		ret = append(ret, val)
@@ -71,14 +65,12 @@ func GetParentDomainAndSubDomain(ctx *context.Context) ([]DomainInfo, error) {
 	return ret, nil
 }
 
-func GetDomainsOfUser(ctx *context.Context) ([]DomainInfo, error) {
-	r := ctx.Request
+func GetSubDomains(r *http.Request) ([]rpcDomainInfo, error) {
 	r.ParseForm()
-	cookie, _ := ctx.Request.Cookie("Authorization")
+	cookie, _ := r.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
 	if err != nil {
 		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
 		return nil, err
 	}
 
@@ -86,22 +78,20 @@ func GetDomainsOfUser(ctx *context.Context) ([]DomainInfo, error) {
 	defer rows.Close()
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
 		return nil, err
 	}
 
 	//	var oneLine ProjectMgr
-	var rst []DomainInfo
+	var rst []rpcDomainInfo
 	err = dbobj.Scan(rows, &rst)
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "query domain info failed.", err)
 		return nil, err
 	}
 
-	var ret []DomainInfo
+	var ret []rpcDomainInfo
 	for _, val := range getDomainTops(rst) {
-		var tmp []DomainInfo
+		var tmp []rpcDomainInfo
 		dtree(rst, val.Domain_id, 2, &tmp)
 		val.Domain_dept = "1"
 		ret = append(ret, val)
@@ -110,8 +100,8 @@ func GetDomainsOfUser(ctx *context.Context) ([]DomainInfo, error) {
 	return ret, nil
 }
 
-func getDomainTops(node []DomainInfo) []DomainInfo {
-	var ret []DomainInfo
+func getDomainTops(node []rpcDomainInfo) []rpcDomainInfo {
+	var ret []rpcDomainInfo
 	for _, val := range node {
 		flag := true
 		for _, iv := range node {
@@ -126,8 +116,8 @@ func getDomainTops(node []DomainInfo) []DomainInfo {
 	return ret
 }
 
-func dtree(node []DomainInfo, id string, d int, result *[]DomainInfo) {
-	var oneline DomainInfo
+func dtree(node []rpcDomainInfo, id string, d int, result *[]rpcDomainInfo) {
+	var oneline rpcDomainInfo
 	for _, val := range node {
 		if val.Domain_up_id == id {
 			oneline.Domain_id = val.Domain_id

@@ -390,5 +390,22 @@ func init() {
 		sys_rdbms_068 = `select user_id from sys_user_info where user_id = ?`
 		sys_rdbms_039 = `update sys_user_info set org_unit_id = ?,user_maintance_date = now(),user_maintance_user = ? where user_id = ?`
 		sys_rdbms_069 = `update sys_org_info set org_unit_desc = ? ,up_org_id = ?,org_status_id = ? ,start_date = str_to_date(?,'%Y-%m-%d'), end_date = str_to_date(?,'%Y-%m-%d'),maintance_date = now(),maintance_user=? where org_unit_id = ?`
+		sys_rdbms_070 = `SELECT t.theme_id,i.theme_desc, res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id 
+							FROM bigdata.sys_theme_value t
+							left join sys_theme_info i
+							on t.theme_id = i.theme_id
+							inner join sys_user_theme e
+							on t.theme_id = e.theme_id
+							where e.user_id = ? and t.res_id = ?`
+		sys_rdbms_071 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE where t.res_attr = 0`
+		sys_rdbms_072 = `insert into sys_resource_info(res_id,res_name,res_attr,res_up_id,res_type) values(?,?,?,?,?)`
+		sys_rdbms_073 = `insert into sys_theme_value(uuid,theme_id,res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id)
+							values(uuid(),?,?,?,?,?,?,?,?,?)`
+		sys_rdbms_074 = `insert into  sys_role_resource_relat(uuid,role_id,res_id) values(uuid(),?,?)`
+		sys_rdbms_075 = `delete from sys_role_resource_relat where res_id = ?`
+		sys_rdbms_076 = `delete from sys_theme_value where res_id = ?`
+		sys_rdbms_077 = `delete from sys_resource_info where res_id = ?`
+		sys_rdbms_078 = `select 1 from sys_role_user_relation t inner join sys_role_resource_relat r on t.role_id = r.role_id where t.user_id = ? and r.res_id = ?`
+		sys_rdbms_079 = `select 1 from sys_role_user_relation t inner join sys_role_resource_relat r on t.role_id = r.role_id inner join sys_user_theme e on t.user_id = e.user_id inner join sys_theme_value v on r.res_id = v.res_id and e.theme_id = v.theme_id where t.user_id = ? and v.res_url = ?`
 	}
 }

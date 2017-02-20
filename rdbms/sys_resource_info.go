@@ -1,6 +1,7 @@
 package rdbms
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"strconv"
 
@@ -9,6 +10,8 @@ import (
 	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
+	"github.com/hzwy23/dbobj/utils"
+	"strings"
 )
 
 type ResInfo struct {
@@ -56,116 +59,6 @@ func getResourceInfo(ctx *context.Context) {
 	hret.WriteBootstrapTableJson(ctx.ResponseWriter, dbobj.Count("select count(*) from sys_resource_info"), ret)
 }
 
-/*
-
-func (this *ResInfo) Get(w http.ResponseWriter, r *http.Request) {
-	if auth.Access(w, r) == false {
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
-	offset, _ := strconv.Atoi(r.FormValue("offset"))
-	limit, _ := strconv.Atoi(r.FormValue("limit"))
-	sql := sqlText.PLATFORM_RESOURCE_RESINFO1
-	rows, err := dbobj.Query(sql, offset, limit+offset)
-	defer rows.Close()
-	if err != nil {
-		logs.Error(err)
-	}
-	var one ResInfo
-	var rst []ResInfo
-	for rows.Next() {
-		err := rows.Scan(&one.Res_id,
-			&one.Res_name,
-			&one.Res_attr,
-			&one.Res_attr_desc,
-			&one.Res_url,
-			&one.Res_up_id,
-			&one.Res_type,
-			&one.Res_type_desc)
-		if err != nil {
-			logs.Error(err)
-		}
-		rst = append(rst, one)
-	}
-	var ret []ResInfo
-	this.resTree(rst, "-1", 1, &ret)
-	this.WritePage(w, dbobj.Count("select count(*) from sys_resource_info"), ret)
-}
-
-func (this *ResInfo) Post(w http.ResponseWriter, r *http.Request) {
-	if auth.Access(w, r) == false {
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
-	r.ParseForm()
-
-	resId := r.FormValue("resId")
-	resDesc := r.FormValue("resDesc")
-	resUrl := r.FormValue("resUrl")
-	resUpId := r.FormValue("resUpId")
-	resAttr := r.FormValue("resAttr")
-	resType := r.FormValue("resType")
-
-	sql := sqlText.PLATFORM_RESOURCE_RESINFO3
-	err := dbobj.Exec(sql, resId, resDesc, resAttr, resUrl, resUpId, resType)
-	if err != nil {
-		logs.Error(err)
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("新增菜单失败, 菜单编码是:" + resId))
-	}
-
-}
-
-func (this *ResInfo) Put(w http.ResponseWriter, r *http.Request) {
-	if auth.Access(w, r) == false {
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
-	r.ParseForm()
-	resId := r.FormValue("resId")
-	resDesc := r.FormValue("resDesc")
-	resUrl := r.FormValue("resUrl")
-	resUpId := r.FormValue("resUpId")
-	resAttr := r.FormValue("resAttr")
-	resConf := r.FormValue("resConf")
-	resType := r.FormValue("resType")
-	logs.Debug(resId, resDesc, resUrl, resUpId, resAttr, resConf, resType)
-	sql := sqlText.PLATFORM_RESOURCE_RESINFO4
-	err := dbobj.Exec(sql, resDesc, resAttr, resUrl, resUpId, resConf, resType, resId)
-	if err != nil {
-		logs.Error(err)
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("新增菜单失败, 菜单编码是:" + resId))
-	}
-}
-
-func (this *ResInfo) Delete(w http.ResponseWriter, r *http.Request) {
-	if auth.Access(w, r) == false {
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
-	r.ParseForm()
-	ijs := r.FormValue("JSON")
-	var js []ResInfo
-	err := json.Unmarshal([]byte(ijs), &js)
-	if err != nil {
-		logs.Error(err)
-	}
-
-	sql := sqlText.PLATFORM_RESOURCE_RESINFO2
-	for _, val := range js {
-		err := dbobj.Exec(sql, val.Res_id)
-		if err != nil {
-			logs.Error(err)
-			w.WriteHeader(http.StatusNoContent)
-			w.Write([]byte("删除菜单失败." + val.Res_id))
-			return
-		}
-	}
-}
-
-*/
-
 func getTops(node []ResInfo) []ResInfo {
 	var ret []ResInfo
 	for _, val := range node {
@@ -200,7 +93,206 @@ func resTree(node []ResInfo, id string, d int, result *[]ResInfo) {
 	}
 }
 
+func getResourceUpInfo(ctx *context.Context) {
+
+	rows, err := dbobj.Query(sys_rdbms_071)
+	defer rows.Close()
+	if err != nil {
+		logs.Error(err)
+	}
+
+	var rst []ResInfo
+	err = dbobj.Scan(rows, &rst)
+	if err != nil {
+		logs.Error(err)
+	}
+
+	tops := getTops(rst)
+
+	var ret []ResInfo
+	for _, val := range tops {
+		var tmp []ResInfo
+		resTree(rst, val.Res_id, 2, &tmp)
+		val.Res_dept = "1"
+		ret = append(ret, val)
+		ret = append(ret, tmp...)
+	}
+	hret.WriteJson(ctx.ResponseWriter, ret)
+}
+
+func postSysResourceInfo(ctx *context.Context) {
+	ctx.Request.ParseForm()
+	res_id := ctx.Request.FormValue("resId")
+	res_desc := ctx.Request.FormValue("resDesc")
+	res_url := ctx.Request.FormValue("resUrl")
+	res_up_id := ctx.Request.FormValue("resUpId")
+	res_class := ctx.Request.FormValue("resClass")
+	res_attr := ctx.Request.FormValue("resAttr")
+	res_typ := ctx.Request.FormValue("resType")
+	res_images := ctx.Request.FormValue("resImages")
+	res_group_id := ctx.Request.FormValue("resGroupid")
+	res_sort_id := ctx.Request.FormValue("resSortid")
+	if !utils.ValidAlphaNumber(res_id,1,30){
+		logs.Error("资源编码必须由1,30位字母或数字组成")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"资源编码必须由1,30位字母或数字组成")
+		return
+	}
+
+	if strings.TrimSpace(res_desc)==""{
+		logs.Error("菜单名称不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单名称不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_url)==""{
+		logs.Error("菜单路由地址不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单路由地址不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_up_id)==""{
+		logs.Error("菜单上级编码不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单上级编码不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_class)==""{
+		logs.Error("菜单样式类型不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单样式类型不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_attr)==""{
+		logs.Error("菜单属性值不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单属性值不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_typ)==""{
+		logs.Error("菜单类别不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单类别不能为空")
+		return
+	}
+
+	if strings.TrimSpace(res_images)==""{
+		logs.Error("菜单图标不能为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单图标不能为空")
+		return
+	}
+
+	if !utils.ValidNumber(res_group_id,1,2){
+		logs.Error("菜单分组信息必须是数字")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单分组信息必须是数字")
+		return
+	}
+
+	if !utils.ValidNumber(res_sort_id,1,2){
+		logs.Error("菜单排序号必须是数字")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,333,"菜单排序号必须是数字")
+		return
+	}
+
+	logs.Debug("res_id:", res_id, "res_desc:", res_desc, "res_url:", res_url,
+		"res_up_id:", res_up_id, "res_class:", res_class, "res_attr:", res_attr,
+		"res_type:", res_typ, "res_images:", res_images, "res_group_id:", res_group_id,
+		"res_sort_id:", res_sort_id)
+
+	tx, err := dbobj.Begin()
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 319, "启动数据库事务处理失败")
+		return
+	}
+
+	_, err = tx.Exec(sys_rdbms_072, res_id, res_desc, res_attr, res_up_id, res_typ)
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 321, "写入资源信息失败")
+		return
+	}
+
+	_, err = tx.Exec(sys_rdbms_073, "1001", res_id, res_url, res_typ, "#339999", res_class, res_group_id, res_images, res_sort_id)
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 322, "写入资源信息失败")
+		return
+	}
+
+	_, err = tx.Exec(sys_rdbms_074, "vertex_root_join_sysadmin", res_id)
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 323, "写入资源信息失败")
+		return
+	}
+	tx.Commit()
+	hret.WriteHttpOkMsgs(ctx.ResponseWriter, "add resource info successfully.")
+}
+
+func deleteResourceInfo(ctx *context.Context) {
+
+	ctx.Request.ParseForm()
+
+	ijs := ctx.Request.FormValue("JSON")
+
+	var rst []ResInfo
+
+	err := json.Unmarshal([]byte(ijs), &rst)
+
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 333, "解析前端参数失败")
+		return
+	}
+	logs.Debug("info is :", rst)
+	tx, err := dbobj.Begin()
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 345, "开启事物处理失败")
+		return
+	}
+	for _, val := range rst {
+
+		if !HaveRightsById(ctx,val.Res_id){
+			logs.Error("没有权限删除这个菜单",val.Res_id)
+			tx.Rollback()
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 349, "没有权限删除这个菜单"+val.Res_id)
+			return
+		}
+
+		_, err = tx.Exec(sys_rdbms_075, val.Res_id)
+		if err != nil {
+			logs.Error(err)
+			tx.Rollback()
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 346, "删除角色资源关系信息失败")
+			return
+		}
+		_, err = tx.Exec(sys_rdbms_076, val.Res_id)
+		if err != nil {
+			logs.Error(err)
+			tx.Rollback()
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 347, "删除主题中资源信息失败")
+			return
+		}
+
+		_, err = tx.Exec(sys_rdbms_077, val.Res_id)
+		if err != nil {
+			logs.Error(err)
+			tx.Rollback()
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 348, "删除资源列表中的资源信息失败")
+			return
+		}
+	}
+	tx.Commit()
+	hret.WriteHttpOkMsgs(ctx.ResponseWriter, "remove resource successfully.")
+}
+
 func init() {
 	beego.Get("/v1/auth/resource/page", getResourcePage)
 	beego.Get("/v1/auth/resource/get", getResourceInfo)
+	beego.Post("/v1/auth/resource/delete", deleteResourceInfo)
+	beego.Post("/v1/auth/resource/post", postSysResourceInfo)
+	beego.Get("/v1/auth/resource/get/upid", getResourceUpInfo)
 }

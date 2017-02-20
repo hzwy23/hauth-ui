@@ -343,4 +343,14 @@ var (
 
 	sys_rdbms_068 = ""
 	sys_rdbms_069 = ""
+	sys_rdbms_070 = ""
+	sys_rdbms_071 = ""
+	sys_rdbms_072 = ""
+	sys_rdbms_073 = ""
+	sys_rdbms_074 = ""
+	sys_rdbms_075 = ""
+	sys_rdbms_076 = ""
+	sys_rdbms_077 = ""
+	sys_rdbms_078 = ""
+	sys_rdbms_079 = ""
 )
