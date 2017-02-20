@@ -7,4 +7,6 @@ var (
 	//return：用户主题编码
 	sys_rpc_001 = ""
 	sys_rpc_002 = ""
+	sys_rpc_003 = ""
+	sys_rpc_004 = ""
 )

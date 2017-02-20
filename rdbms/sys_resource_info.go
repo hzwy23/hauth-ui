@@ -11,6 +11,7 @@ import (
 	"github.com/hzwy23/hauth/hret"
 	"github.com/hzwy23/hauth/logs"
 	"github.com/hzwy23/dbobj/utils"
+	"github.com/hzwy23/hauth/rpc"
 	"strings"
 )
 
@@ -255,7 +256,7 @@ func deleteResourceInfo(ctx *context.Context) {
 	}
 	for _, val := range rst {
 
-		if !HaveRightsById(ctx,val.Res_id){
+		if !rpc.HaveRightsById(ctx,val.Res_id){
 			logs.Error("没有权限删除这个菜单",val.Res_id)
 			tx.Rollback()
 			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 349, "没有权限删除这个菜单"+val.Res_id)

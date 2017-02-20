@@ -351,6 +351,4 @@ var (
 	sys_rdbms_075 = ""
 	sys_rdbms_076 = ""
 	sys_rdbms_077 = ""
-	sys_rdbms_078 = ""
-	sys_rdbms_079 = ""
 )

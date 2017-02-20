@@ -405,7 +405,5 @@ func init() {
 		sys_rdbms_075 = `delete from sys_role_resource_relat where res_id = ?`
 		sys_rdbms_076 = `delete from sys_theme_value where res_id = ?`
 		sys_rdbms_077 = `delete from sys_resource_info where res_id = ?`
-		sys_rdbms_078 = `select 1 from sys_role_user_relation t inner join sys_role_resource_relat r on t.role_id = r.role_id where t.user_id = ? and r.res_id = ?`
-		sys_rdbms_079 = `select 1 from sys_role_user_relation t inner join sys_role_resource_relat r on t.role_id = r.role_id inner join sys_user_theme e on t.user_id = e.user_id inner join sys_theme_value v on r.res_id = v.res_id and e.theme_id = v.theme_id where t.user_id = ? and v.res_url = ?`
 	}
 }

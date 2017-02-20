@@ -15,7 +15,7 @@ func HaveRightsById(ctx *context.Context,id string) bool {
 		return false
 	}
 	status := 0
-	err=dbobj.QueryRow(sys_rdbms_078,jc.User_id,id).Scan(&status)
+	err=dbobj.QueryRow(sys_rpc_004,jc.User_id,id).Scan(&status)
 	if err!=nil{
 		logs.Error("no rights")
 		return false
@@ -37,7 +37,7 @@ func HaveRightsByUri(ctx *context.Context)bool{
 
 	url := ctx.Request.RequestURI
 	status := 0
-	err=dbobj.QueryRow(sys_rdbms_079,jc.User_id,url).Scan(&status)
+	err=dbobj.QueryRow(sys_rpc_003,jc.User_id,url).Scan(&status)
 
 	if err!=nil{
 		logs.Error("no rights")
