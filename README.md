@@ -25,3 +25,7 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 3.修改DB.passwd成上边用户所对应的密码，系统启动后会自动加密，在此输入密码明文即可。
 4.导入环境变量BIGDATA_HOME=devops，将devops修改成绝对路径。
 5.在devops目录中运行可执行文件。
+
+## 交流方式
+1.email:hzwy23@163.com
+2.demo:[https://www.asofdate.com](https://www.asofdate.com)
