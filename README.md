@@ -37,6 +37,10 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 
 5. 在devops目录中运行可执行文件。
 
+6. 登录系统用户名是：admin，密码是：admin
+
 ## 交流方式
-1.email:hzwy23@163.com
-2.demo:[https://www.asofdate.com](https://www.asofdate.com)
+
+1. Email: hzwy23@163.com
+
+2. demo演示地址:[https://www.asofdate.com](https://www.asofdate.com)
