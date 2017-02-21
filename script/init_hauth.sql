@@ -385,7 +385,7 @@ CREATE TABLE `sys_sec_user` (
 
 LOCK TABLES `sys_sec_user` WRITE;
 /*!40000 ALTER TABLE `sys_sec_user` DISABLE KEYS */;
-INSERT INTO `sys_sec_user` VALUES ('admin','xzPEh+SfFL3aimN0zGNB9w==','0',0);
+INSERT INTO `sys_sec_user` VALUES ('admin','5kL3WDY0gjBovcvZfqPCRw==','0',0);
 /*!40000 ALTER TABLE `sys_sec_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
