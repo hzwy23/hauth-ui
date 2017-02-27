@@ -14,7 +14,7 @@ type HttpOkMsg struct {
 	Reply_code int         `json:"reply_code"`
 	Reply_msg  string      `json:"reply_msg"`
 	Data       interface{} `json:"data,omitempty"`
-	Total      int         `json:"total,omitempty"`
+	Total      int64       `json:"total,omitempty"`
 	Rows       interface{} `json:"rows,omitempty"`
 }
 
@@ -102,7 +102,7 @@ func WriteHttpOkMsgs(w http.ResponseWriter, v interface{}) {
 	return
 }
 
-func WriteBootstrapTableJson(w http.ResponseWriter, total int, v interface{}) {
+func WriteBootstrapTableJson(w http.ResponseWriter, total int64, v interface{}) {
 	ok := HttpOkMsg{
 		Version:    "v1.0",
 		Reply_code: 200,

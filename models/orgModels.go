@@ -9,26 +9,27 @@ type OrgModel struct {
 }
 
 type SysOrgInfo struct {
-	Org_unit_id     string `json:"Org_unit_id"`
-	Org_unit_desc   string `json:"Org_unit_desc"`
-	Up_org_id       string `json:"Up_org_id"`
-	Org_status_id   string `json:"Org_status_id"`
-	Org_status_desc string `json:"Org_status_desc"`
-	Domain_id       string `json:"Domain_id"`
-	Domain_desc     string `json:"Domain_desc"`
-	Start_date      string `json:"Start_date"`
-	End_date        string `json:"End_date"`
-	Create_date     string `json:"Create_date"`
-	Maintance_date  string `json:"Maintance_date"`
-	Create_user     string `json:"Create_user"`
-	Maintance_user  string `json:"Maintance_user"`
-	Code_number     string `json:"Code_number"`
-	Org_dept        string `json:"Org_dept,omitempty"`
+	Org_unit_id     string `json:"org_id"`
+	Org_unit_desc   string `json:"org_desc"`
+	Up_org_id       string `json:"up_org_id"`
+	Org_status_id   string `json:"status_id"`
+	Org_status_desc string `json:"status_desc"`
+	Domain_id       string `json:"domain_id"`
+	Domain_desc     string `json:"domain_desc"`
+	Start_date      string `json:"start_date"`
+	End_date        string `json:"end_date"`
+	Create_date     string `json:"create_date"`
+	Maintance_date  string `json:"modify_date"`
+	Create_user     string `json:"create_user"`
+	Maintance_user  string `json:"modify_user"`
+	Code_number     string `json:"code_number"`
+	Org_dept        string `json:"org_dept,omitempty"`
 }
 
-func (OrgModel) Get(domain_id, org_id, offset, limit string) ([]SysOrgInfo, error) {
+//获取域下边所有机构号
+func (OrgModel) Get(domain_id string) ([]SysOrgInfo, error) {
 	var rst []SysOrgInfo
-	rows, err := dbobj.Query(sys_rdbms_041, domain_id, org_id, offset, limit)
+	rows, err := dbobj.Query(sys_rdbms_041, domain_id)
 	if err != nil {
 		return nil, err
 	}

@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 
 	"github.com/astaxie/beego/context"
 
-	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/models"
 	"github.com/hzwy23/hauth/utils"
 	"github.com/hzwy23/hauth/utils/hret"
@@ -41,13 +39,13 @@ func (this DomainController) GetDomainInfo(ctx *context.Context) {
 	offset := ctx.Request.FormValue("offset")
 	limit := ctx.Request.FormValue("limit")
 
-	rst, err := this.models.Get(offset, limit)
+	rst,total, err := this.models.GetAll(offset, limit)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 312, "查询数据库失败")
 	}
 
-	hret.WriteBootstrapTableJson(ctx.ResponseWriter, dbobj.Count("select count(*) from SYS_domain_info"), rst)
+	hret.WriteBootstrapTableJson(ctx.ResponseWriter,total, rst)
 }
 
 func (this DomainController) PostDomainInfo(ctx *context.Context) {
@@ -130,76 +128,21 @@ func (this DomainController) UpdateDomainInfo(ctx *context.Context) {
 	}
 }
 
-func (DomainController) getDomainTops(node []models.ProjectMgr) []models.ProjectMgr {
-	var ret []models.ProjectMgr
-	for _, val := range node {
-		flag := true
-		for _, iv := range node {
-			if val.Domain_up_id == iv.Project_id {
-				flag = false
-			}
-		}
-		if flag {
-			ret = append(ret, val)
-		}
-	}
-	return ret
-}
-
-func (this DomainController) dtree(node []models.ProjectMgr, id string, d int, result *[]models.ProjectMgr) {
-	var oneline models.ProjectMgr
-	for _, val := range node {
-		if val.Domain_up_id == id {
-			oneline.Project_id = val.Project_id
-			oneline.Project_name = val.Project_name
-			oneline.Domain_up_id = val.Domain_up_id
-			oneline.Project_status = val.Project_status
-			oneline.Maintance_date = val.Maintance_date
-			oneline.User_id = val.User_id
-			oneline.Domain_dept = strconv.Itoa(d)
-			oneline.Domain_maintance_date = val.Domain_maintance_date
-			oneline.Domain_maintance_user = val.Domain_maintance_user
-			*result = append(*result, oneline)
-			this.dtree(node, val.Project_id, d+1, result)
-		}
-	}
-}
-
-func (this DomainController) GetDomainByUserInfo(ctx *context.Context) {
+func  (this DomainController) GetDomainOwner(ctx *context.Context){
+	ctx.Request.ParseForm()
 
 	cookie, _ := ctx.Request.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
 	if err != nil {
 		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 410, "No Auth")
 		return
 	}
-
-	rst, err := this.models.GetDomainInfoByUser(jclaim.User_id)
+	rst, err := this.models.Get(jclaim.Domain_id)
 	if err != nil {
 		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "查询数据库失败")
-		return
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 412, "查询数据库失败")
 	}
-	var ret []models.ProjectMgr
-	for _, val := range this.getDomainTops(rst) {
-		var tmp []models.ProjectMgr
-		this.dtree(rst, val.Project_id, 2, &tmp)
-		val.Domain_dept = "1"
-		ret = append(ret, val)
-		ret = append(ret, tmp...)
-	}
-	hret.WriteJson(ctx.ResponseWriter, ret)
-}
 
-func (this DomainController) GetSubDomainInfo(ctx *context.Context) {
-	ctx.Request.ParseForm()
-	domainid := ctx.Request.FormValue("domain_id")
-	rst, err := this.models.GetDomainInfoByUpId(domainid)
-	if err != nil {
-		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 333, "查询数据库失败")
-		return
-	}
 	hret.WriteJson(ctx.ResponseWriter, rst)
 }

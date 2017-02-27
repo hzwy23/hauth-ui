@@ -17,8 +17,29 @@ type ProjectMgr struct {
 	Domain_up_id          string `json:"domain_up_id"`
 }
 
-func (ProjectMgr) Get(offset, limit string) ([]ProjectMgr, error) {
-	rows, err := dbobj.Query(sys_rdbms_034, offset, limit)
+func (ProjectMgr)GetAll(offset,limit string)([]ProjectMgr,int64,error){
+	rows, err := dbobj.Query(sys_rdbms_082, offset, limit)
+	defer rows.Close()
+	if err != nil {
+		logs.Error("query data error.", dbobj.GetErrorMsg(err))
+		return nil,0, err
+	}
+
+	//	var oneLine ProjectMgr
+	var rst []ProjectMgr
+	err = dbobj.Scan(rows, &rst)
+	if err != nil {
+		logs.Error("query data error.", dbobj.GetErrorMsg(err))
+		return nil,0, err
+	}
+	var total int64 = 0
+	dbobj.QueryRow(sys_rdbms_081).Scan(&total)
+
+	return rst,total, nil
+}
+
+func (ProjectMgr) Get(domain_id string) ([]ProjectMgr, error) {
+	rows, err := dbobj.Query(sys_rdbms_034,domain_id)
 	defer rows.Close()
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
@@ -32,6 +53,7 @@ func (ProjectMgr) Get(offset, limit string) ([]ProjectMgr, error) {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
 		return nil, err
 	}
+
 	return rst, nil
 }
 
@@ -57,38 +79,4 @@ func (ProjectMgr) Delete(js []ProjectMgr) error {
 }
 func (ProjectMgr) Update(domainDesc, domainStatus, user_id, domainId string) error {
 	return dbobj.Exec(sys_rdbms_038, domainDesc, domainStatus, user_id, domainId)
-}
-
-func (ProjectMgr) GetDomainInfoByUser(domain_id string) ([]ProjectMgr, error) {
-	rows, err := dbobj.Query(sys_rdbms_035, domain_id)
-	defer rows.Close()
-	if err != nil {
-		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		return nil, err
-	}
-
-	//	var oneLine ProjectMgr
-	var rst []ProjectMgr
-	err = dbobj.Scan(rows, &rst)
-	if err != nil {
-		logs.Error("query data error.", dbobj.GetErrorMsg(err))
-		return nil, err
-	}
-	return rst, nil
-}
-
-func (ProjectMgr) GetDomainInfoByUpId(domainid string) ([]ProjectMgr, error) {
-	rows, err := dbobj.Query(sys_rdbms_067, domainid)
-	defer rows.Close()
-	if err != nil {
-		logs.Error(err)
-		return nil, err
-	}
-	var rst []ProjectMgr
-	err = dbobj.Scan(rows, &rst)
-	if err != nil {
-		logs.Error(err)
-		return nil, err
-	}
-	return rst, nil
 }

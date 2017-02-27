@@ -35,11 +35,10 @@ func init() {
 	beego.Get("/v1/auth/domain/share/page",controllers.DomainCtl.SharePage)
 
 	beego.Get("/v1/auth/domain/get", controllers.DomainCtl.GetDomainInfo)
-	beego.Get("/v1/auth/user/domain", controllers.DomainCtl.GetDomainByUserInfo)
 	beego.Post("/v1/auth/domain/post", controllers.DomainCtl.PostDomainInfo)
 	beego.Post("/v1/auth/domain/delete", controllers.DomainCtl.DeleteDomainInfo)
 	beego.Put("/v1/auth/domain/update", controllers.DomainCtl.UpdateDomainInfo)
-	beego.Get("/v1/auth/domain/subdomain", controllers.DomainCtl.GetSubDomainInfo)
+	beego.Get("/v1/auth/domain/owner",controllers.DomainCtl.GetDomainOwner)
 	beego.Get("/v1/auth/handle/logs/download.xlsx", controllers.HandleLogsCtl.Download)
 
 	beego.Get("/v1/auth/batch/page", controllers.AuthroityCtl.GetBatchPage)
@@ -57,6 +56,8 @@ func init() {
 	beego.Get("/v1/auth/resource/page", controllers.ResourceCtl.Page)
 	beego.Get("/v1/auth/user/page", controllers.UserCtl.Page)
 	beego.Get("/v1/auth/user/get/default",controllers.UserCtl.Get)
+	beego.Post("/v1/auth/user/post",controllers.UserCtl.Post)
+	beego.Post("/v1/auth/user/delete",controllers.UserCtl.Delete)
 
 	beego.Get("/v1/auth/role/page", controllers.RoleCtl.Page)
 

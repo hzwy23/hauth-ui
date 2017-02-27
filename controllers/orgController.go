@@ -30,8 +30,7 @@ func (OrgController) GetOrgPage(ctx *context.Context) {
 
 func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 
-	offset := ctx.Request.FormValue("offset")
-	limit := ctx.Request.FormValue("limit")
+	domain_id:=ctx.Request.FormValue("domain_id")
 
 	cookie, _ := ctx.Request.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
@@ -40,7 +39,10 @@ func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
 		return
 	}
-	rst, err := this.models.Get(jclaim.Domain_id, jclaim.Org_id, offset, limit)
+	if domain_id==""{
+		domain_id = jclaim.Domain_id
+	}
+	rst, err := this.models.Get(domain_id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 417, "操作数据库失败")
@@ -54,7 +56,7 @@ func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 		ret = append(ret, val)
 		ret = append(ret, tmp...)
 	}
-	hret.WriteBootstrapTableJson(ctx.ResponseWriter, 1000, ret)
+	hret.WriteJson(ctx.ResponseWriter,ret)
 }
 
 func (this OrgController) DeleteOrgInfo(ctx *context.Context) {
