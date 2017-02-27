@@ -7,15 +7,9 @@ import (
 
 	"github.com/astaxie/beego/context"
 
-	_ "github.com/hzwy23/hauth/start"
+	"github.com/hzwy23/hauth/utils/token/hjwt"
 
-	_ "github.com/hzwy23/hauth/rdbms"
-
-	"github.com/hzwy23/hauth/token/hjwt"
-
-	"github.com/hzwy23/hauth/route"
-
-	"github.com/hzwy23/hauth/logs"
+	"github.com/hzwy23/hauth/utils/logs"
 )
 
 func RequireAuth(w http.ResponseWriter, r *http.Request) {
@@ -24,12 +18,12 @@ func RequireAuth(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	route.InsertFilter("/v1/*", beego.BeforeRouter, func(ctx *context.Context) {
+	beego.InsertFilter("/v1/*", beego.BeforeRouter, func(ctx *context.Context) {
 		cookie, err := ctx.Request.Cookie("Authorization")
 		if err != nil || !hjwt.CheckToken(cookie.Value) {
 			logs.Warn("have no authority. redirect to index")
 			RequireAuth(ctx.ResponseWriter, ctx.Request)
 		}
 	})
-	route.Run()
+	beego.Run()
 }
