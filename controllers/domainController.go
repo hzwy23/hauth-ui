@@ -13,6 +13,7 @@ import (
 	"github.com/hzwy23/hauth/utils/hret"
 	"github.com/hzwy23/hauth/utils/logs"
 	"github.com/hzwy23/hauth/utils/token/hjwt"
+	"strings"
 )
 
 type DomainController struct {
@@ -24,12 +25,6 @@ var DomainCtl = &DomainController{models: &models.ProjectMgr{}}
 func (DomainController) GetDomainInfoPage(ctx *context.Context) {
 	defer hret.HttpPanic()
 	file, _ := ioutil.ReadFile("./views/hauth/domain_info.tpl")
-	ctx.ResponseWriter.Write(file)
-}
-
-func (DomainController)SharePage(ctx *context.Context){
-	defer hret.HttpPanic()
-	file,_:=ioutil.ReadFile("./views/hauth/domain_share_info.tpl")
 	ctx.ResponseWriter.Write(file)
 }
 
@@ -55,15 +50,19 @@ func (this DomainController) PostDomainInfo(ctx *context.Context) {
 	domainStatus := ctx.Request.FormValue("domainStatus")
 	//校验
 	if !utils.ValidAlnumAndSymbol(domainId, 1, 30) {
-		ctx.ResponseWriter.WriteHeader(http.StatusExpectationFailed)
-		ctx.ResponseWriter.Write([]byte("域名编码格式错误,应为字母或数字组合，不为空"))
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"域名编码格式错误,应为字母或数字组合，不为空")
 		return
 	}
 
 	//
 	if !utils.ValidBool(domainStatus) {
-		ctx.ResponseWriter.WriteHeader(http.StatusExpectationFailed)
-		ctx.ResponseWriter.Write([]byte("域名状态❌"))
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"域状态不能为空")
+		return
+	}
+
+	if strings.TrimSpace(domainDesc) == ""{
+		logs.Error("域名信息为空")
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"所属域描述信息为空，请填写域描述信息")
 		return
 	}
 
@@ -145,4 +144,17 @@ func  (this DomainController) GetDomainOwner(ctx *context.Context){
 	}
 
 	hret.WriteJson(ctx.ResponseWriter, rst)
+}
+
+func (this DomainController)GetDetails(ctx *context.Context){
+	ctx.Request.ParseForm()
+	var domain_id = ctx.Request.FormValue("domain_id")
+
+	rst,err:=this.models.GetRow(domain_id)
+	if err!=nil{
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"查询域详细信息失败")
+		return
+	}
+	hret.WriteJson(ctx.ResponseWriter,rst)
 }

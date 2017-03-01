@@ -108,7 +108,7 @@ func init() {
 		sys_rdbms_038 = `update sys_domain_info set domain_name = ?, domain_status_id = ?, domain_maintance_date = now(), domain_maintance_user = ? where domain_id = ?`
 		sys_rdbms_040 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE limit ?,?`
 
-		sys_rdbms_041 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user
+		sys_rdbms_041 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,create_date,maintance_date,create_user,maintance_user,code_number
 								FROM sys_org_info t
 								inner join sys_domain_info i on t.domain_id = i.domain_id
 								inner join sys_org_status_attr r on t.org_status_id = r.org_status_id
@@ -125,7 +125,7 @@ func init() {
 											    and s.org_status_id = '0'
 											    and s.org_unit_id = t.org_unit_id
 										)`
-		sys_rdbms_043 = `insert into sys_org_info(code_number,org_unit_desc,up_org_id,org_status_id,domain_id,start_date,end_date,create_date,maintance_date,create_user,maintance_user,org_unit_id) values(?,?,?,?,?,?,?,now(),now(),?,?,?)`
+		sys_rdbms_043 = `insert into sys_org_info(code_number,org_unit_desc,up_org_id,org_status_id,domain_id,create_date,maintance_date,create_user,maintance_user,org_unit_id) values(?,?,?,?,?,now(),now(),?,?,?)`
 		sys_rdbms_044 = `delete from sys_org_info where org_unit_id = ?`
 		sys_rdbms_045 = `delete from sys_role_user_relation where user_id = ?`
 		sys_rdbms_046 = `select t.role_id,t.role_name,t.code_number
@@ -284,15 +284,14 @@ func init() {
 									and t.domain_id = s.domain_id
 								    and s.domain_id = ?
 								) `
-		sys_rdbms_061 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,start_date,end_date,create_date,maintance_date,create_user,maintance_user,t.code_number 
+		sys_rdbms_061 = `SELECT org_unit_id,org_unit_desc,up_org_id,t.org_status_id,r.org_status_desc,t.domain_id,i.domain_name,create_date,maintance_date,create_user,maintance_user,t.code_number
 								FROM sys_org_info t
 								inner join sys_domain_info i on t.domain_id = i.domain_id
 								inner join sys_org_status_attr r on t.org_status_id = r.org_status_id
 								where exists (
-									SELECT 1 from sys_domain_info s
-									where FIND_IN_SET(s.domain_id,getChildDomainList(?))
-									and t.domain_id = s.domain_id
-								    and s.domain_id = ?
+								    SELECT 1 from sys_org_info s
+								    where FIND_IN_SET(s.org_unit_id,getChildOrgList(?))
+								    and s.org_unit_id = t.org_unit_id
 								)`
 		sys_rdbms_062 = `select count(*)
 									from sys_user_info t
@@ -360,7 +359,7 @@ func init() {
 		sys_rdbms_067 = `SELECT domain_id,domain_name,domain_up_id,domain_status_id from sys_domain_info s where FIND_IN_SET(s.domain_id,getChildDomainList(?))`
 		sys_rdbms_068 = `select user_id from sys_user_info where user_id = ?`
 		sys_rdbms_039 = `update sys_user_info set org_unit_id = ?,user_maintance_date = now(),user_maintance_user = ? where user_id = ?`
-		sys_rdbms_069 = `update sys_org_info set org_unit_desc = ? ,up_org_id = ?,org_status_id = ? ,start_date = str_to_date(?,'%Y-%m-%d'), end_date = str_to_date(?,'%Y-%m-%d'),maintance_date = now(),maintance_user=? where org_unit_id = ?`
+		sys_rdbms_069 = `update sys_org_info set org_unit_desc = ? ,up_org_id = ?,org_status_id = ? ,maintance_date = now(),maintance_user=? where org_unit_id = ?`
 		sys_rdbms_070 = `SELECT t.theme_id,i.theme_desc, res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id 
 							FROM bigdata.sys_theme_value t
 							left join sys_theme_info i
@@ -383,5 +382,12 @@ func init() {
 		sys_rdbms_082 = `select t.domain_id as project_id, t.domain_name as project_name, s.domain_status_name  as status_name, t.domain_create_date  as maintance_date, t.domain_owner as user_id,t.domain_maintance_date,t.domain_maintance_user
 							from SYS_domain_info t inner join sys_domain_status_attr s  on t.domain_status_id = s.domain_status_id
 							limit ?,?`
+		sys_rdbms_083 = `SELECT t.uuid,t.target_domain_id,i.domain_name,t.authorization_level,t.create_user,t.create_date,t.modify_user,t.modify_date FROM sys_domain_share_info t
+							inner join sys_domain_info i
+							on t.target_domain_id = i.domain_id
+							where t.domain_id = ?`
+		sys_rdbms_084 = `select t.domain_id as project_id, t.domain_name as project_name, s.domain_status_name  as status_name, t.domain_create_date  as maintance_date, t.domain_owner as user_id,t.domain_maintance_date,t.domain_maintance_user
+							from SYS_domain_info t inner join sys_domain_status_attr s  on t.domain_status_id = s.domain_status_id
+							where t.domain_id = ?`
 	}
 }

@@ -25,7 +25,7 @@ func GenToken(user_id, domain_id, org_id string) string {
 	claims := JwtClaims{
 		&jwt.StandardClaims{
 			NotBefore: int64(time.Now().Unix()),
-			ExpiresAt: int64(time.Now().Unix() + 36000),
+			ExpiresAt: int64(time.Now().Unix() + 360000),
 			Issuer:    "hzwy23",
 		},
 		user_id,

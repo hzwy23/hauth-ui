@@ -16,8 +16,6 @@ type SysOrgInfo struct {
 	Org_status_desc string `json:"status_desc"`
 	Domain_id       string `json:"domain_id"`
 	Domain_desc     string `json:"domain_desc"`
-	Start_date      string `json:"start_date"`
-	End_date        string `json:"end_date"`
 	Create_date     string `json:"create_date"`
 	Maintance_date  string `json:"modify_date"`
 	Create_user     string `json:"create_user"`
@@ -54,39 +52,28 @@ func (OrgModel) Delete(mjs []SysOrgInfo) error {
 	return tx.Commit()
 }
 
-func (OrgModel) Update(org_unit_desc, up_org_id, org_status_id, start_date, end_date, maintance_user, org_unit_id string) error {
+func (OrgModel) Update(org_unit_desc, up_org_id, org_status_id, maintance_user, org_unit_id string) error {
 	return dbobj.Exec(sys_rdbms_069, org_unit_desc, up_org_id, org_status_id,
-		start_date, end_date, maintance_user, org_unit_id)
+		 maintance_user, org_unit_id)
 }
 
-func (OrgModel) Post(org_unit_id, org_unit_desc, up_org_id, org_status_id, domain_id, start_date, end_date, create_user, maintance_user, id string) error {
+func (OrgModel) Post(org_unit_id, org_unit_desc, up_org_id, org_status_id, domain_id,create_user, maintance_user, id string) error {
 	return dbobj.Exec(sys_rdbms_043, org_unit_id, org_unit_desc, up_org_id, org_status_id,
-		domain_id, start_date, end_date, create_user, maintance_user, id)
+		domain_id, create_user, maintance_user, id)
 }
 
-func (OrgModel) GetOrgByDomainId(org_id string, domain_id string, did string) ([]SysOrgInfo, error) {
+func (OrgModel) GetSubOrgInfo(org_id string) ([]SysOrgInfo, error) {
 	var rst []SysOrgInfo
-	if did != domain_id {
-		rows, err := dbobj.Query(sys_rdbms_061, domain_id, did)
-		if err != nil {
-			return nil, err
-		}
 
-		err = dbobj.Scan(rows, &rst)
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		rows, err := dbobj.Query(sys_rdbms_060, org_id, domain_id, did)
-		if err != nil {
-			return nil, err
-		}
-
-		err = dbobj.Scan(rows, &rst)
-		if err != nil {
-			return nil, err
-		}
-
+	rows, err := dbobj.Query(sys_rdbms_061, org_id)
+	if err != nil {
+		return nil, err
 	}
+
+	err = dbobj.Scan(rows, &rst)
+	if err != nil {
+		return nil, err
+	}
+
 	return rst, nil
 }

@@ -9,10 +9,14 @@ import (
 	"github.com/astaxie/beego/context"
 
 	"github.com/hzwy23/hauth/models"
-	"github.com/hzwy23/hauth/utils"
+
 	"github.com/hzwy23/hauth/utils/hret"
 	"github.com/hzwy23/hauth/utils/logs"
 	"github.com/hzwy23/hauth/utils/token/hjwt"
+	"github.com/hzwy23/hauth/utils"
+	"github.com/tealeg/xlsx"
+	"strings"
+	"fmt"
 )
 
 type OrgController struct {
@@ -47,16 +51,17 @@ func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 417, "操作数据库失败")
 	}
-	tops := this.getOrgTops(rst)
-	var ret []models.SysOrgInfo
-	for _, val := range tops {
-		var tmp []models.SysOrgInfo
-		this.orgTree(rst, val.Org_unit_id, 2, &tmp)
-		val.Org_dept = "1"
-		ret = append(ret, val)
-		ret = append(ret, tmp...)
-	}
-	hret.WriteJson(ctx.ResponseWriter,ret)
+	//  adjust sort handle in javascript
+	//  tops := this.getOrgTops(rst)
+	//  var ret []models.SysOrgInfo
+	//  for _, val := range tops {
+	//	var tmp []models.SysOrgInfo
+	//	this.orgTree(rst, val.Org_unit_id, 2, &tmp)
+	//	val.Org_dept = "1"
+	//	ret = append(ret, val)
+	//	ret = append(ret, tmp...)
+	//}
+	hret.WriteJson(ctx.ResponseWriter,rst)
 }
 
 func (this OrgController) DeleteOrgInfo(ctx *context.Context) {
@@ -93,16 +98,23 @@ func (this OrgController) UpdateOrgInfo(ctx *context.Context) {
 	org_unit_id := ctx.Request.FormValue("Id")
 	org_unit_desc := ctx.Request.FormValue("Org_unit_desc")
 	up_org_id := ctx.Request.FormValue("Up_org_id")
-	start_date := ctx.Request.FormValue("Start_date")
-	end_date := ctx.Request.FormValue("End_date")
+	org_status_id := ctx.Request.FormValue("Status_cd")
 
-	maintance_user := jclaim.User_id
-	org_status_id := "0"
-	if utils.AGTEB(start_date, end_date) {
-		org_status_id = "1"
+	check,err:=this.models.GetSubOrgInfo(org_unit_id)
+	if err!=nil{
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"操作数据库失败。")
+		return
 	}
-	err = this.models.Update(org_unit_desc, up_org_id, org_status_id,
-		start_date, end_date, maintance_user, org_unit_id)
+
+	for _,val:=range check {
+		if val.Org_unit_id == up_org_id{
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"上级机构号不能是自己的下属机构")
+			return
+		}
+	}
+
+	err = this.models.Update(org_unit_desc, up_org_id, org_status_id, jclaim.User_id, org_unit_id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "modify org info failed.", err)
@@ -124,18 +136,35 @@ func (this OrgController) InsertOrgInfo(ctx *context.Context) {
 	org_unit_desc := ctx.Request.FormValue("Org_unit_desc")
 	up_org_id := ctx.Request.FormValue("Up_org_id")
 	domain_id := ctx.Request.FormValue("Domain_id")
-	start_date := ctx.Request.FormValue("Start_date")
-	end_date := ctx.Request.FormValue("End_date")
+
 	id := domain_id + "_join_" + org_unit_id
 	create_user := jclaim.User_id
 	maintance_user := jclaim.User_id
 	org_status_id := "0"
-	if utils.AGTEB(start_date, end_date) {
-		org_status_id = "1"
+
+
+	if !utils.ValidAlphaNumber(org_unit_id,1,30){
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"机构编码必须有1,30位字母或数字组成")
+		return
+	}
+
+	if strings.TrimSpace(org_unit_desc)==""{
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"机构名称不能为空，请输入机构名称")
+		return
+	}
+
+	if strings.TrimSpace(domain_id)==""{
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"请选择所属域，所属域不能为空")
+		return
+	}
+
+	if strings.TrimSpace(up_org_id)=="" {
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"请选择上级机构号，上级机构号不能为空")
+		return
 	}
 
 	err = this.models.Post(org_unit_id, org_unit_desc, up_org_id, org_status_id,
-		domain_id, start_date, end_date, create_user, maintance_user, id)
+		domain_id, create_user, maintance_user, id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, http.StatusExpectationFailed, "add new org info failed.", err)
@@ -172,11 +201,27 @@ func (this OrgController) orgTree(node []models.SysOrgInfo, id string, d int, re
 	}
 }
 
-func (this OrgController) GetOrgInfoByDomain(ctx *context.Context) {
+func (this OrgController) GetSubOrgInfo(ctx *context.Context) {
 
 	ctx.Request.ParseForm()
-	domainid := ctx.Request.FormValue("domain_id")
 
+	org_unit_id := ctx.Request.FormValue("org_unit_id")
+
+	rst, err := this.models.GetSubOrgInfo(org_unit_id)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 419, "操作数据库失败")
+		return
+	}
+
+	hret.WriteJson(ctx.ResponseWriter, rst)
+}
+
+
+func (this OrgController)Download(ctx *context.Context){
+	ctx.ResponseWriter.Header().Set("Content-Type", "application/vnd.ms-excel")
+	domain_id:=ctx.Request.FormValue("domain_id")
+	fmt.Println(domain_id)
 	cookie, _ := ctx.Request.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cookie.Value)
 	if err != nil {
@@ -184,20 +229,71 @@ func (this OrgController) GetOrgInfoByDomain(ctx *context.Context) {
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
 		return
 	}
-	rst, err := this.models.GetOrgByDomainId(jclaim.Org_id, jclaim.Domain_id, domainid)
+	if domain_id==""{
+		domain_id = jclaim.Domain_id
+	}
+	rst, err := this.models.Get(domain_id)
 	if err != nil {
 		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 419, "操作数据库失败")
-		return
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 417, "操作数据库失败")
 	}
-	tops := this.getOrgTops(rst)
-	var ret []models.SysOrgInfo
-	for _, val := range tops {
-		var tmp []models.SysOrgInfo
-		this.orgTree(rst, val.Org_unit_id, 2, &tmp)
-		val.Org_dept = "1"
-		ret = append(ret, val)
-		ret = append(ret, tmp...)
+
+	var file *xlsx.File
+	var sheet *xlsx.Sheet
+
+	file = xlsx.NewFile()
+	sheet, err = file.AddSheet("Sheet1")
+	if err != nil {
+		fmt.Printf(err.Error())
 	}
-	hret.WriteJson(ctx.ResponseWriter, ret)
+
+	{
+		row := sheet.AddRow()
+		cell1 := row.AddCell()
+		cell1.Value= "机构编码"
+		cell2 := row.AddCell()
+		cell2.Value= "机构名称"
+		cell3 := row.AddCell()
+		cell3.Value= "上级用户编码"
+		cell4 := row.AddCell()
+		cell4.Value= "机构状态"
+		cell5 := row.AddCell()
+		cell5.Value = "创建日期"
+		cell6 := row.AddCell()
+		cell6.Value = "创建人"
+		cell7 := row.AddCell()
+		cell7.Value = "维护日期"
+		cell8 := row.AddCell()
+		cell8.Value = "维护人"
+		cell9 := row.AddCell()
+		cell9.Value = "所属域"
+	}
+
+	for _,v:=range rst{
+		row := sheet.AddRow()
+		cell1 := row.AddCell()
+		cell1.Value=v.Code_number
+		cell2 := row.AddCell()
+		cell2.Value=v.Org_unit_desc
+		cell3 := row.AddCell()
+		uplist:=strings.Split(v.Up_org_id,"_join_")
+		if len(uplist)==2{
+			cell3.Value=uplist[1]
+		}else{
+			cell3.Value=v.Up_org_id
+		}
+		cell4 := row.AddCell()
+		cell4.Value=v.Org_status_desc
+		cell5 := row.AddCell()
+		cell5.Value = v.Create_date
+		cell6 := row.AddCell()
+		cell6.Value = v.Create_user
+		cell7 := row.AddCell()
+		cell7.Value = v.Maintance_date
+		cell8 := row.AddCell()
+		cell8.Value = v.Maintance_user
+		cell9 := row.AddCell()
+		cell9.Value = v.Domain_desc
+	}
+	file.Write(ctx.ResponseWriter)
 }

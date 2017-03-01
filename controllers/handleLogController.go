@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"bytes"
+
 	"fmt"
-	"os"
+
 	"text/template"
 
 	"github.com/astaxie/beego/context"
@@ -15,49 +15,6 @@ import (
 	"github.com/hzwy23/hauth/utils/token/hjwt"
 	"github.com/tealeg/xlsx"
 )
-
-type testdate struct {
-	Id   string
-	Name string
-	Age  string
-}
-
-func genXlsxData() *bytes.Buffer {
-	var file *xlsx.File
-	var sheet *xlsx.Sheet
-	var row *xlsx.Row
-	//	var cell *xlsx.Cell
-	var err error
-
-	var td = testdate{
-		Id:   "hi",
-		Name: "hello",
-		Age:  "f10"}
-
-	var arr = []string{"1", "2", "3", "4"}
-
-	file = xlsx.NewFile()
-	sheet, err = file.AddSheet("Sheet1")
-	if err != nil {
-		fmt.Printf(err.Error())
-	}
-	row = sheet.AddRow()
-	row.WriteSlice(&arr, -1)
-
-	row2 := sheet.AddRow()
-	row2.WriteStruct(&td, -1)
-	//cell = row.AddCell()
-	//cell.Value = "I am a cell!"
-	var tmp = make([]byte, 1)
-	var buf = bytes.NewBuffer(tmp)
-	err = file.Write(buf)
-
-	if err != nil {
-		fmt.Printf(err.Error())
-		return buf
-	}
-	return buf
-}
 
 type HandleLogsController struct {
 }
@@ -81,13 +38,76 @@ func (HandleLogsController) GetHandleLogPage(ctx *context.Context) {
 }
 
 func (HandleLogsController) Download(ctx *context.Context) {
-	//ctx.ResponseWriter.Header().Set("Content-Type", "application/vnd.ms-excel")
-	var buf = genXlsxData().Bytes()
-	fd, _ := os.Create("testxlsx.xlsx")
-	fd.Write(buf)
-	fd.Sync()
-	fd.Close()
-	ctx.ResponseWriter.Write(buf)
+	ctx.ResponseWriter.Header().Set("Content-Type", "application/vnd.ms-excel")
+
+	cookie, _ := ctx.Request.Cookie("Authorization")
+	jclaim, err := hjwt.ParseJwt(cookie.Value)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+		return
+	}
+	sql := `select uuid,user_id,handle_time,client_ip,status_code,method,url,data from sys_handle_logs t
+			where t.domain_id = ? order by handle_time desc`
+	var rst []handleLogs
+	rows, err := dbobj.Query(sql, jclaim.Domain_id)
+	defer rows.Close()
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "query failed.")
+		return
+	}
+	err = dbobj.Scan(rows, &rst)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "query failed.")
+		return
+	}
+
+	var file *xlsx.File
+	var sheet *xlsx.Sheet
+
+	file = xlsx.NewFile()
+	sheet, err = file.AddSheet("机构信息")
+	if err != nil {
+		fmt.Printf(err.Error())
+	}
+
+	row := sheet.AddRow()
+	cell1 := row.AddCell()
+	cell1.Value= "用户"
+	cell2 := row.AddCell()
+	cell2.Value= "操作日期"
+	cell3 := row.AddCell()
+	cell3.Value= "客户端IP"
+	cell4 := row.AddCell()
+	cell4.Value= "请求方法"
+	cell5 := row.AddCell()
+	cell5.Value = "API地址"
+	cell6 := row.AddCell()
+	cell6.Value = "返回状态"
+	cell7 := row.AddCell()
+	cell7.Value = "请求数据"
+
+
+	for _,v:=range rst{
+		row := sheet.AddRow()
+		cell1 := row.AddCell()
+		cell1.Value=v.User_id
+		cell2 := row.AddCell()
+		cell2.Value=v.Handle_time
+		cell3 := row.AddCell()
+		cell3.Value=v.Client_ip
+		cell4 := row.AddCell()
+		cell4.Value=v.Method
+		cell5 := row.AddCell()
+		cell5.Value = v.Url
+		cell6 := row.AddCell()
+		cell6.Value = v.Status_code
+		cell7 := row.AddCell()
+		cell7.Value = v.Data
+	}
+	file.Write(ctx.ResponseWriter)
 }
 
 func (HandleLogsController) GetHandleLogs(ctx *context.Context) {

@@ -32,14 +32,15 @@ func init() {
 	beego.Get("/v1/auth/handle/logs/search", controllers.HandleLogsCtl.SerachLogs)
 
 	beego.Get("/v1/auth/domain/page", controllers.DomainCtl.GetDomainInfoPage)
-	beego.Get("/v1/auth/domain/share/page",controllers.DomainCtl.SharePage)
+	beego.Get("/v1/auth/domain/share/page",controllers.DomainShareCtl.Page)
+	beego.Get("/v1/auth/domain/share/get",controllers.DomainShareCtl.Get)
 
 	beego.Get("/v1/auth/domain/get", controllers.DomainCtl.GetDomainInfo)
 	beego.Post("/v1/auth/domain/post", controllers.DomainCtl.PostDomainInfo)
 	beego.Post("/v1/auth/domain/delete", controllers.DomainCtl.DeleteDomainInfo)
 	beego.Put("/v1/auth/domain/update", controllers.DomainCtl.UpdateDomainInfo)
 	beego.Get("/v1/auth/domain/owner",controllers.DomainCtl.GetDomainOwner)
-	beego.Get("/v1/auth/handle/logs/download.xlsx", controllers.HandleLogsCtl.Download)
+	beego.Get("/v1/auth/domain/row/details",controllers.DomainCtl.GetDetails)
 
 	beego.Get("/v1/auth/batch/page", controllers.AuthroityCtl.GetBatchPage)
 	beego.Post("/v1/auth/batch/grant", controllers.AuthroityCtl.BatchGrants)
@@ -47,7 +48,7 @@ func init() {
 	beego.Get("/v1/auth/roles/getted", controllers.AuthroityCtl.GetGettedRoles)
 	beego.Get("/v1/auth/roles/canGrant", controllers.AuthroityCtl.CanGrantRoles)
 
-	beego.Get("/v1/auth/relation/domain/org", controllers.OrgCtl.GetOrgInfoByDomain)
+	beego.Get("/v1/auth/relation/domain/org", controllers.OrgCtl.GetSubOrgInfo)
 	beego.Get("/v1/auth/resource/org/page", controllers.OrgCtl.GetOrgPage)
 	beego.Get("/v1/auth/resource/org/get", controllers.OrgCtl.GetSysOrgInfo)
 	beego.Post("/v1/auth/resource/org/insert", controllers.OrgCtl.InsertOrgInfo)
@@ -66,4 +67,7 @@ func init() {
 	beego.Post("/v1/auth/role/delete", controllers.RoleCtl.DeleteRoleInfo)
 	beego.Put("/v1/auth/role/update", controllers.RoleCtl.UpdateRoleInfo)
 	beego.Get("/v1/auth/role/resource/details",controllers.RoleCtl.ResourcePage)
+
+	beego.Get("/v1/auth/handle/logs/download", controllers.HandleLogsCtl.Download)
+	beego.Get("/v1/auth/resource/org/download",controllers.OrgCtl.Download)
 }

@@ -38,6 +38,13 @@ func (ProjectMgr)GetAll(offset,limit string)([]ProjectMgr,int64,error){
 	return rst,total, nil
 }
 
+func (ProjectMgr)GetRow(domain_id string)(ProjectMgr,error){
+	var rst ProjectMgr
+	err:=dbobj.QueryRow(sys_rdbms_084,domain_id).Scan(&rst.Project_id,
+	&rst.Project_name,&rst.Project_status,&rst.Maintance_date,&rst.User_id,&rst.Domain_maintance_date,&rst.Domain_maintance_user)
+	return rst,err
+}
+
 func (ProjectMgr) Get(domain_id string) ([]ProjectMgr, error) {
 	rows, err := dbobj.Query(sys_rdbms_034,domain_id)
 	defer rows.Close()
