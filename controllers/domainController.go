@@ -158,3 +158,18 @@ func (this DomainController)GetDetails(ctx *context.Context){
 	}
 	hret.WriteJson(ctx.ResponseWriter,rst)
 }
+
+func (this DomainController)GetDomainId(ctx *context.Context){
+	ctx.Request.ParseForm()
+
+	cookie, _ := ctx.Request.Cookie("Authorization")
+	jclaim, err := hjwt.ParseJwt(cookie.Value)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 410, "No Auth")
+		return
+	}
+	var domain_id = jclaim.Domain_id
+
+	hret.WriteJson(ctx.ResponseWriter,domain_id)
+}

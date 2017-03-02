@@ -93,10 +93,11 @@ func init() {
 		sys_rdbms_033 = `delete from  sys_role_resource_relat where uuid = ?`
 		sys_rdbms_034 = `select t.domain_id as project_id, t.domain_name as project_name, s.domain_status_name  as status_name, t.domain_create_date  as maintance_date, t.domain_owner as user_id,t.domain_maintance_date,t.domain_maintance_user
 							from SYS_domain_info t inner join sys_domain_status_attr s  on t.domain_status_id = s.domain_status_id
-							where t.domain_id = ? or (
-								select 1 from sys_domain_share_info ino
-								where t.domain_id = ino.domain_id
-							)`
+							where exists (
+								 select 1 from sys_domain_share_info i
+								 where i.target_domain_id = ?
+								 and t.domain_id = i.domain_id
+							) or t.domain_id = ?`
 		sys_rdbms_035 = `select t.domain_id as project_id, t.domain_name as project_name, t.domain_up_id, s.domain_status_name  as status_name, t.domain_create_date  as maintance_date, t.domain_owner as user_id,t.domain_maintance_date,t.domain_maintance_user
 								from SYS_domain_info t inner join sys_domain_status_attr s  on t.domain_status_id = s.domain_status_id 
 								where exists (
@@ -360,14 +361,12 @@ func init() {
 		sys_rdbms_068 = `select user_id from sys_user_info where user_id = ?`
 		sys_rdbms_039 = `update sys_user_info set org_unit_id = ?,user_maintance_date = now(),user_maintance_user = ? where user_id = ?`
 		sys_rdbms_069 = `update sys_org_info set org_unit_desc = ? ,up_org_id = ?,org_status_id = ? ,maintance_date = now(),maintance_user=? where org_unit_id = ?`
-		sys_rdbms_070 = `SELECT t.theme_id,i.theme_desc, res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id 
+		sys_rdbms_070 = `SELECT t.theme_id,i.theme_desc, res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id
 							FROM bigdata.sys_theme_value t
 							left join sys_theme_info i
 							on t.theme_id = i.theme_id
-							inner join sys_user_theme e
-							on t.theme_id = e.theme_id
-							where e.user_id = ? and t.res_id = ?`
-		sys_rdbms_071 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE where t.res_attr = 0`
+							where t.theme_id = ? and t.res_id = ?`
+		sys_rdbms_071 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE`
 		sys_rdbms_072 = `insert into sys_resource_info(res_id,res_name,res_attr,res_up_id,res_type) values(?,?,?,?,?)`
 		sys_rdbms_073 = `insert into sys_theme_value(uuid,theme_id,res_id,res_url,res_type,res_bg_color,res_class,group_id,res_img,sort_id)
 							values(uuid(),?,?,?,?,?,?,?,?,?)`
@@ -389,5 +388,15 @@ func init() {
 		sys_rdbms_084 = `select t.domain_id as project_id, t.domain_name as project_name, s.domain_status_name  as status_name, t.domain_create_date  as maintance_date, t.domain_owner as user_id,t.domain_maintance_date,t.domain_maintance_user
 							from SYS_domain_info t inner join sys_domain_status_attr s  on t.domain_status_id = s.domain_status_id
 							where t.domain_id = ?`
+		sys_rdbms_085 = `select t.domain_id as project_id, t.domain_name as project_name from SYS_domain_info t
+							where not exists (
+							   select 1 from sys_domain_share_info i
+							   where t.domain_id = i.target_domain_id
+							   and i.domain_id = ?)`
+		sys_rdbms_086 = `insert into sys_domain_share_info(uuid,domain_id,target_domain_id,authorization_level,create_user,create_date,modify_date,modify_user) values(uuid(),?,?,?,?,now(),now(),?)`
+		sys_rdbms_087 = `delete from sys_domain_share_info where uuid = ?`
+		sys_rdbms_088 = `update sys_domain_share_info set authorization_level = ?,modify_user = ? , modify_date = now() where uuid = ?`
+		sys_rdbms_089 = `SELECT T.RES_ID,T.RES_NAME,T.RES_ATTR, A.RES_attr_DESC,T.RES_UP_ID,T.res_type,R.RES_TYPE_DESC FROM sys_resource_info T INNER JOIN sys_resource_info_attr A ON T.RES_ATTR = A.RES_ATTR INNER JOIN SYS_RESOURCE_TYPE_ATTR R ON T.RES_TYPE = R.RES_TYPE where res_id = ?`
+
 	}
 }

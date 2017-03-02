@@ -46,7 +46,7 @@ func (ProjectMgr)GetRow(domain_id string)(ProjectMgr,error){
 }
 
 func (ProjectMgr) Get(domain_id string) ([]ProjectMgr, error) {
-	rows, err := dbobj.Query(sys_rdbms_034,domain_id)
+	rows, err := dbobj.Query(sys_rdbms_034,domain_id,domain_id)
 	defer rows.Close()
 	if err != nil {
 		logs.Error("query data error.", dbobj.GetErrorMsg(err))
