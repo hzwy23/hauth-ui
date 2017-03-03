@@ -67,9 +67,14 @@ func init() {
 	beego.Post("/v1/auth/resource/delete",controllers.ResourceCtl.Delete)
 
 	beego.Get("/v1/auth/user/page", controllers.UserCtl.Page)
-	beego.Get("/v1/auth/user/get/default",controllers.UserCtl.Get)
+	beego.Get("/v1/auth/user/get",controllers.UserCtl.Get)
 	beego.Post("/v1/auth/user/post",controllers.UserCtl.Post)
 	beego.Post("/v1/auth/user/delete",controllers.UserCtl.Delete)
+	beego.Get("/v1/auth/user/search",controllers.UserCtl.Search)
+	beego.Get("/v1/auth/user/roles/get",controllers.UserRolesController.GetRolesByUuser)
+	beego.Get("/v1/auth/user/roles/other",controllers.UserRolesController.GetOtherRoles)
+	beego.Post("/v1/auth/user/roles/auth",controllers.UserRolesController.Auth)
+	beego.Post("/v1/auth/user/roles/revoke",controllers.UserRolesController.Revoke)
 
 	beego.Get("/v1/auth/role/page", controllers.RoleCtl.Page)
 
@@ -78,6 +83,8 @@ func init() {
 	beego.Post("/v1/auth/role/delete", controllers.RoleCtl.DeleteRoleInfo)
 	beego.Put("/v1/auth/role/update", controllers.RoleCtl.UpdateRoleInfo)
 	beego.Get("/v1/auth/role/resource/details",controllers.RoleCtl.ResourcePage)
+	beego.Get("/v1/auth/role/resource/get",controllers.RoleCtl.GetResource)
+	beego.Post("/v1/auth/role/resource/rights",controllers.RoleCtl.HandleResource)
 
 	beego.Get("/v1/auth/handle/logs/download", controllers.HandleLogsCtl.Download)
 	beego.Get("/v1/auth/resource/org/download",controllers.OrgCtl.Download)

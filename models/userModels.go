@@ -25,11 +25,12 @@ type userInfo struct {
 	Domain_name         string `json:"domain_name"`
 	User_maintance_date string `json:"modify_date"`
 	User_maintance_user string `json:"modify_user"`
+	User_status_id     string  `json:"status_cd"`
 }
 
-func (UserModel)GetDefault(domain_id ,offset, limit string)([]userInfo,error){
+func (UserModel)GetDefault(domain_id string)([]userInfo,error){
 
-	row, err := dbobj.Query(sys_rdbms_017, domain_id ,offset, limit)
+	row, err := dbobj.Query(sys_rdbms_017, domain_id)
 	defer row.Close()
 	if err != nil {
 		logs.Error(err)
@@ -108,4 +109,51 @@ func (UserModel)Delete(ijs []byte,user_id string)error{
 		}
 	}
 	return tx.Commit()
+}
+
+func (this UserModel)Search(org_id string,status_id string,domain_id string)([]userInfo,error){
+	var rst []userInfo
+	var err error
+	// 如果机构号为空
+	// 直接查询指定域中所有的用户
+	if org_id == "" {
+		rst,err = this.GetDefault(domain_id)
+		if err!=nil{
+			logs.Error(err)
+			return nil,err
+		}
+	}else{
+		rows,err:=dbobj.Query(sys_rdbms_090,org_id)
+		if err!=nil{
+			logs.Error(err)
+			return nil,err
+		}
+
+		err = dbobj.Scan(rows,&rst)
+		if err!=nil{
+			logs.Error(err)
+			return nil,err
+		}
+	}
+
+
+	if status_id == ""{
+		return rst,nil
+	} else if status_id == "0"{
+		var ret []userInfo
+		for _,val:=range rst{
+			if val.User_status_id == "0"{
+				ret = append(ret,val)
+			}
+		}
+		return ret,nil
+	} else {
+		var ret []userInfo
+		for _,val:=range rst{
+			if val.User_status_id == "1"{
+				ret = append(ret,val)
+			}
+		}
+		return ret,nil
+	}
 }

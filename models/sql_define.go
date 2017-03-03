@@ -11,29 +11,29 @@ var (
 	//function:删除用户主题信息属性，通常在删除用户时使用这段sql
 	//argument:用户账号
 	//return:无
-	sys_rdbms_002 = ""
+	//sys_rdbms_002 = ""
 
 	//code:003
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_003 = ""
+	//sys_rdbms_003 = ""
 	//code:004
 	//function:向用户主题属性表中写入用户属性信息
 	//argument:用户账号，主题编码
 	//return:无
-	sys_rdbms_004 = ""
+	//sys_rdbms_004 = ""
 
 	//code:005
 	//function:查询用户详细信息
 	//argument:用户账号
 	//return:用户信息表
-	sys_rdbms_005 = ""
+	//sys_rdbms_005 = ""
 	//code:006
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_006 = ""
+	//sys_rdbms_006 = ""
 	//code:007
 	//function:
 	//argument:
@@ -43,12 +43,12 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_008 = ""
+	//sys_rdbms_008 = ""
 	//code:009
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_009 = ""
+	//sys_rdbms_009 = ""
 	//code:010
 	//function:
 	//argument:
@@ -68,7 +68,7 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_013 = ""
+	//sys_rdbms_013 = ""
 	//code:014
 	//function:
 	//argument:
@@ -83,7 +83,7 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_016 = ""
+	//sys_rdbms_016 = ""
 	//code:017
 	//function:
 	//argument:
@@ -103,32 +103,32 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_020 = ""
+	//sys_rdbms_020 = ""
 	//code:021
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_021 = ""
+	//sys_rdbms_021 = ""
 	//code:022
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_022 = ""
+	//sys_rdbms_022 = ""
 	//code:023
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_023 = ""
+	//sys_rdbms_023 = ""
 	//code:024
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_024 = ""
+	//sys_rdbms_024 = ""
 	//code:025
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_025 = ""
+	//sys_rdbms_025 = ""
 	//code:026
 	//function:
 	//argument:
@@ -148,27 +148,27 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_029 = ""
+	//sys_rdbms_029 = ""
 	//code:030
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_030 = ""
+	//sys_rdbms_030 = ""
 	//code:031
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_031 = ""
+	//sys_rdbms_031 = ""
 	//code:032
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_032 = ""
+	//sys_rdbms_032 = ""
 	//code:033
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_033 = ""
+	//sys_rdbms_033 = ""
 	//code:034
 	//function:
 	//argument:
@@ -178,7 +178,7 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_035 = ""
+	//sys_rdbms_035 = ""
 	//code:036
 	//function:
 	//argument:
@@ -198,12 +198,12 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_039 = ""
+	//sys_rdbms_039 = ""
 	//code:040
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_040 = ""
+	//sys_rdbms_040 = ""
 	//code:041
 	//function:
 	//argument:
@@ -213,7 +213,7 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_042 = ""
+	//sys_rdbms_042 = ""
 	//code:043
 	//function:
 	//argument:
@@ -248,7 +248,7 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_049 = ""
+	//sys_rdbms_049 = ""
 	//code:050
 	//function:
 	//argument:
@@ -258,52 +258,52 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_051 = ""
+	//sys_rdbms_051 = ""
 	//code:052
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_052 = ""
+	//sys_rdbms_052 = ""
 	//code:053
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_053 = ""
+	//sys_rdbms_053 = ""
 	//code:054
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_054 = ""
+	//sys_rdbms_054 = ""
 	//code:055
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_055 = ""
+	//sys_rdbms_055 = ""
 	//code:056
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_056 = ""
+	//sys_rdbms_056 = ""
 	//code:057
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_057 = ""
+	//sys_rdbms_057 = ""
 	//code:058
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_058 = ""
+	//sys_rdbms_058 = ""
 	//code:059
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_059 = ""
+	//sys_rdbms_059 = ""
 	//code:060
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_060 = ""
+	//sys_rdbms_060 = ""
 	//code:061
 	//function:
 	//argument:
@@ -313,35 +313,35 @@ var (
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_062 = ""
+	//sys_rdbms_062 = ""
 	//code:063
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_063 = ""
+	//sys_rdbms_063 = ""
 	//code:064
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_064 = ""
+	//sys_rdbms_064 = ""
 	//code:065
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_065 = ""
+	//sys_rdbms_065 = ""
 	//code:066
 	//function:
 	//argument:
 	//return:
-	sys_rdbms_066 = ""
+	//sys_rdbms_066 = ""
 
 	//code:067
 	//function: 查询当前域以及子域信息
 	//argument:域编码
 	//return:域详细信息
-	sys_rdbms_067 = ""
+	//sys_rdbms_067 = ""
 
-	sys_rdbms_068 = ""
+	//sys_rdbms_068 = ""
 	sys_rdbms_069 = ""
 	sys_rdbms_070 = ""
 	sys_rdbms_071 = ""

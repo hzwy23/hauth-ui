@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/astaxie/beego/context"
-
 	"github.com/hzwy23/hauth/models"
 	"github.com/hzwy23/hauth/utils"
 	"github.com/hzwy23/hauth/utils/hret"
 	"github.com/hzwy23/hauth/utils/logs"
 	"github.com/hzwy23/hauth/utils/token/hjwt"
-	"strings"
+
 )
 
 type DomainController struct {

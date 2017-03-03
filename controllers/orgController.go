@@ -35,15 +35,14 @@ func (OrgController) GetOrgPage(ctx *context.Context) {
 func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 
 	domain_id:=ctx.Request.FormValue("domain_id")
-
-	cookie, _ := ctx.Request.Cookie("Authorization")
-	jclaim, err := hjwt.ParseJwt(cookie.Value)
-	if err != nil {
-		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
-		return
-	}
 	if domain_id==""{
+		cookie, _ := ctx.Request.Cookie("Authorization")
+		jclaim, err := hjwt.ParseJwt(cookie.Value)
+		if err != nil {
+			logs.Error(err)
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+			return
+		}
 		domain_id = jclaim.Domain_id
 	}
 	rst, err := this.models.Get(domain_id)
@@ -51,16 +50,6 @@ func (this OrgController) GetSysOrgInfo(ctx *context.Context) {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 417, "操作数据库失败")
 	}
-	//  adjust sort handle in javascript
-	//  tops := this.getOrgTops(rst)
-	//  var ret []models.SysOrgInfo
-	//  for _, val := range tops {
-	//	var tmp []models.SysOrgInfo
-	//	this.orgTree(rst, val.Org_unit_id, 2, &tmp)
-	//	val.Org_dept = "1"
-	//	ret = append(ret, val)
-	//	ret = append(ret, tmp...)
-	//}
 	hret.WriteJson(ctx.ResponseWriter,rst)
 }
 

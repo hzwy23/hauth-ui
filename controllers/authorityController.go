@@ -1,6 +1,10 @@
-/*
-* 授权管理
-**/
+// Copyright 2017 The hzwy23 . All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+// authorization management
+// Now this package did not use for the time being
+// all authorization handle is relation to resources. so you can find authorization in roleUserController
 package controllers
 
 import (
@@ -13,6 +17,9 @@ import (
 	"github.com/hzwy23/hauth/utils/token/hjwt"
 )
 
+// Controller
+// for authorization
+// this class provide 4 Method
 type AuthorityController struct {
 	models *models.AuthorityModel
 }
@@ -21,11 +28,16 @@ var AuthroityCtl = &AuthorityController{
 	models: new(models.AuthorityModel),
 }
 
+// Get authorization page
 func (AuthorityController) GetBatchPage(ctx *context.Context) {
 	hz, _ := template.ParseFiles("./views/hauth/sys_batch_page.tpl")
 	hz.Execute(ctx.ResponseWriter, nil)
 }
 
+// grant role to user
+// Arguments:
+// Users     string
+// Roles     string
 func (this AuthorityController) BatchGrants(ctx *context.Context) {
 	ctx.Request.ParseForm()
 	users := ctx.Request.FormValue("Users")
@@ -87,3 +99,4 @@ func (this AuthorityController) CanGrantRoles(ctx *context.Context) {
 	}
 	hret.WriteJson(ctx.ResponseWriter, rst)
 }
+

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/hzwy23/dbobj"
+	"github.com/hzwy23/hauth/utils/logs"
 )
 
 const (
@@ -27,6 +28,8 @@ func forbidUsers(user_id string) {
 	dbobj.Exec("update sys_sec_user set status_id = 1 where user_id = ?", user_id)
 }
 
+
+// check user's passwd is right.
 func BasicAuth(user_id, user_passwd string) (bool, int, int64, string) {
 	var sec mSysUserSec
 	err := dbobj.QueryRow(sys_rdbms_010, user_id).Scan(&sec.User_id, &sec.User_passwd, &sec.User_status, &sec.User_continue_error_cnt)
@@ -50,4 +53,20 @@ func BasicAuth(user_id, user_passwd string) (bool, int, int64, string) {
 		updateContinueErrorCnt(sec.User_continue_error_cnt.Int64+1, user_id)
 		return false, 405, sec.User_continue_error_cnt.Int64 + 1, error_password
 	}
+}
+
+
+// check the user wheather handle the domain
+// return value :
+// -1   : have no right to handle the domain
+// 1    : can read the domain info
+// 2    : can read and wirte the domain info
+func CheckDomainRights(user_id string,domain_id string)int{
+	var cnt = -1
+	err := dbobj.QueryRow(sys_rdbms_001,domain_id,user_id).Scan(&cnt)
+	if err!=nil{
+		logs.Error(err)
+		return -1
+	}
+	return cnt
 }

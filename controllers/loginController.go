@@ -19,6 +19,7 @@ func HomePage(ctx *context.Context) {
 	defer hret.HttpPanic(func() {
 		http.Redirect(ctx.ResponseWriter, ctx.Request, "/", http.StatusMovedPermanently)
 	})
+
 	cok, _ := ctx.Request.Cookie("Authorization")
 	jclaim, err := hjwt.ParseJwt(cok.Value)
 	if err != nil {

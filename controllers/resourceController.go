@@ -2,13 +2,14 @@ package controllers
 
 import (
 	"io/ioutil"
+	"strings"
 
 	"github.com/astaxie/beego/context"
 	"github.com/hzwy23/hauth/models"
 	"github.com/astaxie/beego/logs"
 	"github.com/hzwy23/hauth/utils/hret"
 	"github.com/hzwy23/hauth/utils"
-	"strings"
+
 )
 
 type ResourceController struct {

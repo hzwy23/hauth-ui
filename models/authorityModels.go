@@ -10,6 +10,8 @@ import (
 type AuthorityModel struct {
 }
 
+var AuthModel = new(AuthorityModel)
+
 type mbatchUsers struct {
 	User_id string `json:"user_id"`
 	Role_id string `json:"role_id"`

@@ -23,9 +23,19 @@ type RoleInfo struct {
 	Role_id             string  `json:"role_id"`
 }
 
+func (RoleModel)GetRow(role_id string)([]RoleInfo,error){
+	var rst []RoleInfo
+	rows,err:=dbobj.Query(sys_rdbms_091,role_id)
+	if err!=nil{
+		logs.Error(err)
+		return nil,err
+	}
+	err = dbobj.Scan(rows,&rst)
+	return rst,err
+}
 
-func (RoleModel)Get(user_id,domain_id,offset,limit string)([]RoleInfo,error){
-	rows, err := dbobj.Query(sys_rdbms_028,domain_id, offset, limit)
+func (RoleModel)Get(domain_id string)([]RoleInfo,error){
+	rows, err := dbobj.Query(sys_rdbms_028,domain_id)
 	defer rows.Close()
 	if err != nil {
 		logs.Error(err)
@@ -59,6 +69,6 @@ func (RoleModel)Delete(allrole []RoleInfo)error{
 	return tx.Commit()
 }
 
-func (RoleModel)Update(Role_name, Role_status, Role_id string)error{
-	return dbobj.Exec(sys_rdbms_050, Role_name, Role_status, Role_id)
+func (RoleModel)Update(Role_name, Role_status, Role_id,User_id string)error{
+	return dbobj.Exec(sys_rdbms_050, Role_name, Role_status,User_id, Role_id)
 }

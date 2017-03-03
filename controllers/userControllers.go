@@ -30,18 +30,21 @@ func (UserController) Page(ctx *context.Context) {
 
 func (this UserController)Get(ctx *context.Context){
 	ctx.Request.ParseForm()
-	offset:=ctx.Request.FormValue("offset")
-	limit:=ctx.Request.FormValue("limit")
 
-	cookie, _ := ctx.Request.Cookie("Authorization")
-	jclaim, err := hjwt.ParseJwt(cookie.Value)
-	if err != nil {
-		logs.Error(err)
-		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
-		return
+	domain_id := ctx.Request.FormValue("domain_id")
+
+	if domain_id =="" {
+		cookie, _ := ctx.Request.Cookie("Authorization")
+		jclaim, err := hjwt.ParseJwt(cookie.Value)
+		if err != nil {
+			logs.Error(err)
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+			return
+		}
+		domain_id = jclaim.Domain_id
 	}
 
-	rst,err:=this.models.GetDefault(jclaim.Domain_id,offset,limit)
+	rst,err:=this.models.GetDefault(domain_id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 410, "查询数据库失败。")
@@ -137,4 +140,30 @@ func (this UserController) Delete(ctx *context.Context){
 		hret.WriteHttpOkMsgs(ctx.ResponseWriter,"delete user id successfully.")
 		return
 	}
+}
+
+
+func (this UserController)Search(ctx *context.Context){
+	ctx.Request.ParseForm()
+	var org_id = ctx.Request.FormValue("org_id")
+	var status_id = ctx.Request.FormValue("status_id")
+	var domain_id = ctx.Request.FormValue("domain_id")
+	if domain_id == "" {
+		cookie, _ := ctx.Request.Cookie("Authorization")
+		jclaim, err := hjwt.ParseJwt(cookie.Value)
+		if err != nil {
+			logs.Error(err)
+			hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+			return
+		}
+		domain_id = jclaim.Domain_id
+	}
+	logs.Debug(org_id,status_id)
+	rst,err:=this.models.Search(org_id,status_id,domain_id)
+	if err!=nil{
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter,419,"操作数据库失败")
+		return
+	}
+	hret.WriteJson(ctx.ResponseWriter,rst)
 }
