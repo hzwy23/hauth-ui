@@ -3,6 +3,7 @@ package models
 import (
 	"github.com/hzwy23/dbobj"
 	"github.com/hzwy23/hauth/utils/logs"
+	"errors"
 )
 
 type OrgModel struct {
@@ -39,14 +40,20 @@ func (OrgModel) Get(domain_id string) ([]SysOrgInfo, error) {
 	return rst, nil
 }
 
-func (OrgModel) Delete(mjs []SysOrgInfo) error {
+func (OrgModel) Delete(mjs []SysOrgInfo,org_id string) error {
 	tx, _ := dbobj.Begin()
 	for _, val := range mjs {
-		_, err := tx.Exec(sys_rdbms_044, val.Org_unit_id)
-		if err != nil {
-			logs.Error(err)
+		if val.Org_unit_id != org_id{
+			_, err := tx.Exec(sys_rdbms_044, val.Org_unit_id)
+			if err != nil {
+				logs.Error(err)
+				tx.Rollback()
+				return err
+			}
+		}else{
 			tx.Rollback()
-			return err
+			logs.Error("无法删除用户自身所属机构")
+			return errors.New("无法删除用户自身所属机构")
 		}
 	}
 	return tx.Commit()

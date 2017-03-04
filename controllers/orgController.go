@@ -64,7 +64,15 @@ func (this OrgController) DeleteOrgInfo(ctx *context.Context) {
 		return
 	}
 
-	err = this.models.Delete(mjs)
+	cookie, _ := ctx.Request.Cookie("Authorization")
+	jclaim, err := hjwt.ParseJwt(cookie.Value)
+	if err != nil {
+		logs.Error(err)
+		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 310, "No Auth")
+		return
+	}
+
+	err = this.models.Delete(mjs,jclaim.Org_id)
 	if err != nil {
 		logs.Error(err)
 		hret.WriteHttpErrMsgs(ctx.ResponseWriter, 418, "操作数据库失败")
