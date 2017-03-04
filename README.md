@@ -37,7 +37,7 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 
 5. 在devops目录中运行可执行文件。
 
-6. 登录系统用户名是：admin，密码是：admin
+6. 登录系统用户名是：demo，密码是：123456
 
 ## 交流方式
 
