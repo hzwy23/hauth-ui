@@ -1,6 +1,6 @@
 ## hauth简介
 
-获取完整源代码,请跳转到:[https://github.com/hzwy23/asofdate](https://github.com/hzwy23/asofdate) 
+获取完整前后台源代码,请跳转到:[https://github.com/hzwy23/asofdate](https://github.com/hzwy23/asofdate) 
 
 ## 项目介绍
 
