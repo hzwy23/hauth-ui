@@ -49,6 +49,8 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 sudo ./asofdate_amd64 &
 # i386上执行
 sudo ./asofdate_i386 &
+# window系统, 双击下边的可执行文件
+asofdate.exe
 ```
 
 打开浏览器,登录 https://localhost:8090
