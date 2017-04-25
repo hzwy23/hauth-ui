@@ -45,7 +45,10 @@ DB.passwd="xzPEh+SfFL3aimN0zGNB9w=="
 ## 启动服务
 
 ```shell
-sudo ./hauth &
+# amd64上执行
+sudo ./asofdate_amd64 &
+# i386上执行
+sudo ./asofdate_i386 &
 ```
 
 打开浏览器,登录 https://localhost:8090
