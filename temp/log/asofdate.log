@@ -1,0 +1,565 @@
+{"level":"debug","ts":"2017-04-24 10:37:06","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:37:48","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:37:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:37:50","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 10:40:10","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:40:12","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:41:00","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 10:41:06","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"debug","ts":"2017-04-24 10:43:08","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:43:09","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:43:11","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:44:27","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:44:33","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:48:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:50:13","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:50:20","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:50:20","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:57:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:57:39","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 10:57:39","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 10:57:44","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 10:58:47","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 10:59:37","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"debug","ts":"2017-04-24 11:01:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:01:46","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:02:32","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:06:10","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:07:09","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:07:59","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:11:59","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"debug","ts":"2017-04-24 11:14:23","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:14:29","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:14:39","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:14:44","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:14:49","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:14:54","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:14:59","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:04","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:09","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:14","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:19","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:24","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:29","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:34","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:39","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:44","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:49","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:15:54","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:08","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:13","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:18","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:23","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:28","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:33","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:38","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:43","caller":"service/handlelogs.go:75","msg":"empty"}
+{"level":"error","ts":"2017-04-24 11:16:53","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:16:58","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:17:02","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:17:04","caller":"controller/responsibility_center.go:430","msg":"masmas_join_1293103"}
+{"level":"debug","ts":"2017-04-24 11:17:04","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 11:17:04","caller":"controller/responsibility_center.go:430","msg":"masmas_join_1293101"}
+{"level":"debug","ts":"2017-04-24 11:17:04","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 11:17:06","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:17:07","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:17:13","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 11:17:23","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:17:28","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:17:33","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:17:38","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:17:43","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:17:48","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:17:55","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:17:56","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:17:57","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:09","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:10","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:13","caller":"models/roleModels.go:56","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 11:18:18","caller":"models/roleModels.go:56","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 11:18:18","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:18","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:18:28","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:18:33","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:18:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:18:43","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:18:54","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:18:59","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:04","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:09","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:14","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:19","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:24","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:19:29","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:19:31","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:19:33","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:19:44","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:19:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:19:50","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:19:53","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:19:54","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 11:20:04","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:09","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:14","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:19","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:24","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:29","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:34","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:39","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:44","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:49","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"error","ts":"2017-04-24 11:20:54","caller":"service/handlelogs.go:100","msg":"log buf is empty"}
+{"level":"debug","ts":"2017-04-24 11:26:00","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:26:03","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:26:11","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:26:11","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:30:33","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:30:36","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:30:37","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:30:39","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:02","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:02","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:05","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:06","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:09","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:31:10","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:32:30","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:32:45","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:32:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:43","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:44","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:51","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:52","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:33:59","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:00","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:03","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:03","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:26","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:28","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:30","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:31","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:34:32","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:35:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:35:51","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:37:46","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:37:52","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:37:53","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:38:00","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:38:01","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 11:38:05","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:47:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:47:50","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 12:47:51","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:47:52","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:47:54","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:47:55","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:49:12","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:49:13","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:53:45","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:53:47","caller":"controller/responsibility_center.go:430","msg":"masmas_join_12931"}
+{"level":"debug","ts":"2017-04-24 12:53:47","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 12:53:52","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"error","ts":"2017-04-24 12:53:52","caller":"controller/responsibility_center.go:139","msg":"不能将责任中心自己的下级机构设置成自己的上级机构"}
+{"level":"debug","ts":"2017-04-24 12:54:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:54:48","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:54:57","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 12:54:59","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:27","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:28","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:29","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:30","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:34","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:35","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:42","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:50","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:51","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:02:52","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 13:06:05","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:08:38","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:08:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:08:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:10:01","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:12:29","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:12:30","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:12:33","caller":"controller/responsibility_center.go:430","msg":"masmas_join_12931"}
+{"level":"debug","ts":"2017-04-24 13:12:33","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 13:12:40","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"error","ts":"2017-04-24 13:12:40","caller":"controller/responsibility_center.go:139","msg":"不能将责任中心自己的下级机构设置成自己的上级机构"}
+{"level":"error","ts":"2017-04-24 13:12:41","caller":"controller/responsibility_center.go:139","msg":"不能将责任中心自己的下级机构设置成自己的上级机构"}
+{"level":"error","ts":"2017-04-24 13:12:41","caller":"controller/responsibility_center.go:139","msg":"不能将责任中心自己的下级机构设置成自己的上级机构"}
+{"level":"debug","ts":"2017-04-24 13:12:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:12:50","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:17:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:17:43","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:17:53","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:17:53","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 13:17:57","caller":"model/staticRadioModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 13:53:23","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"error","ts":"2017-04-24 13:59:40","caller":"controller/responsibility_center.go:139","msg":"不能责任中心的上级设置成自己"}
+{"level":"error","ts":"2017-04-24 13:59:41","caller":"controller/responsibility_center.go:139","msg":"不能责任中心的上级设置成自己"}
+{"level":"error","ts":"2017-04-24 13:59:42","caller":"controller/responsibility_center.go:139","msg":"不能责任中心的上级设置成自己"}
+{"level":"error","ts":"2017-04-24 13:59:42","caller":"controller/responsibility_center.go:139","msg":"不能责任中心的上级设置成自己"}
+{"level":"debug","ts":"2017-04-24 14:24:36","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:24:36","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:24:39","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:24:40","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 14:45:11","caller":"model/costDriverModel.go:83","msg":"Error 1062: Duplicate entry 'mas_join_200001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 14:45:11","caller":"controller/costDriverController.go:320","msg":"新增动因定义信息失败"}
+{"level":"debug","ts":"2017-04-24 14:58:08","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:58:10","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:58:35","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:58:37","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:58:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 14:58:42","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:02:03","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:02:13","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:02:56","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:02:58","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:02:59","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:03:11","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 15:03:14","caller":"controller/responsibility_center.go:430","msg":"masmas_join_12931"}
+{"level":"debug","ts":"2017-04-24 15:03:14","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 15:03:14","caller":"controller/responsibility_center.go:430","msg":"masmas_join_1293101"}
+{"level":"debug","ts":"2017-04-24 15:03:14","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 15:03:25","caller":"controller/responsibility_center.go:430","msg":"masmas_join_1293103"}
+{"level":"debug","ts":"2017-04-24 15:03:25","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 15:03:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:03:50","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:04:12","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:04:13","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:04:14","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"debug","ts":"2017-04-24 15:06:47","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:06:49","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:06:50","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:06:52","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 15:09:12","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:12:09","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:09","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:09","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:10","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:18","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:19","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:12:19","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:13:02","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:13:15","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:13:16","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:13:16","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:13:17","caller":"controller/departmentController.go:91","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-24 15:15:08","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:15:09","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:15:09","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:24:02","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:24:03","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:24:03","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 15:24:03","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"debug","ts":"2017-04-24 15:30:09","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:35:41","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:35:43","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"error","ts":"2017-04-24 15:39:19","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 15:39:41","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 15:46:36","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:36","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:37","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:37","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:37","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:37","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:38","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:38","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:38","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:46:38","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_tx01' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:53","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:53","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:54","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:54","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:54","caller":"model/departmentModel.go:149","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 15:47:54","caller":"controller/departmentController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_001' for key 'PRIMARY'"}
+{"level":"debug","ts":"2017-04-24 15:49:31","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:49:32","caller":"models/resourceModels.go:43","msg":"get data from cache"}
+{"level":"debug","ts":"2017-04-24 15:49:56","caller":"controller/responsibility_center.go:430","msg":"masmas_join_1293101"}
+{"level":"debug","ts":"2017-04-24 15:49:56","caller":"model/responsibilityModel.go:54","msg":"get data from cache."}
+{"level":"error","ts":"2017-04-24 15:50:03","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-24 16:13:02","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:13:13","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:15:47","caller":"model/productModel.go:125","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:15:47","caller":"controller/productController.go:347","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:16:43","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:17:43","caller":"model/productModel.go:125","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-24 16:17:43","caller":"controller/productController.go:347","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-24 16:23:33","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:24:06","caller":"model/productModel.go:125","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:24:06","caller":"controller/productController.go:347","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:31:08","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:31:40","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:32:02","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:34:24","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:34:54","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:36:32","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:37:10","caller":"model/productModel.go:125","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:37:10","caller":"controller/productController.go:347","msg":"Error 1062: Duplicate entry 'mas_join_20101002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:40:39","caller":"model/productModel.go:125","msg":"Error 1062: Duplicate entry 'mas_join_10202001002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:40:39","caller":"controller/productController.go:347","msg":"Error 1062: Duplicate entry 'mas_join_10202001002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:42:22","caller":"model/productModel.go:125","msg":"Error 1062: Duplicate entry 'mas_join_10202001002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:42:22","caller":"controller/productController.go:347","msg":"Error 1062: Duplicate entry 'mas_join_10202001002' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 16:42:31","caller":"controllers/domainShareController.go:260","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 16:42:32","caller":"controllers/domainShareController.go:260","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 16:42:47","caller":"controllers/domainShareController.go:260","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 16:44:29","caller":"model/productModel.go:125","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-24 16:44:29","caller":"controller/productController.go:347","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-24 16:44:52","caller":"controllers/domainShareController.go:260","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 16:45:45","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:46:20","caller":"controller/productController.go:314","msg":"没有找到'product_info'这个sheet页"}
+{"level":"error","ts":"2017-04-24 16:48:00","caller":"controllers/domainShareController.go:260","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 16:50:22","caller":"controllers/domainShareController.go:262","msg":"Error 1452: Cannot add or update a child row: a foreign key constraint fails (`test`.`sys_domain_share_info`, CONSTRAINT `fk_sys_domain_share_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+{"level":"error","ts":"2017-04-24 17:00:13","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:00:14","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:00:14","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:00:14","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:00:15","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:00:15","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:05:25","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:05:43","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:05:44","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:05:45","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:05:45","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:13:11","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 17:39:39","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:39:41","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:39:41","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:40:03","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:40:04","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:40:04","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 17:40:04","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-24 18:17:40","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 18:17:42","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 18:17:49","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:17:53","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:20:02","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:20:36","caller":"models/domainModels.go:150","msg":"Error 1451: Cannot delete or update a parent row: a foreign key constraint fails (`test`.`sys_org_info`, CONSTRAINT `fk_sys_org_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)"}
+{"level":"error","ts":"2017-04-24 18:25:03","caller":"models/orgModels.go:70","msg":"Error 1451: Cannot delete or update a parent row: a foreign key constraint fails (`test`.`sys_user_info`, CONSTRAINT `fk_sys_user_org` FOREIGN KEY (`org_unit_id`) REFERENCES `sys_org_info` (`org_unit_id`))"}
+{"level":"error","ts":"2017-04-24 18:25:03","caller":"controllers/orgController.go:182","msg":"这个机构下边存在用户信息,请先清除用户信息,再来删除机构, 机构编码是:devops_product_join_1111000011, 域是: :devops_product"}
+{"level":"error","ts":"2017-04-24 18:27:21","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/domain/share/delete"}
+{"level":"error","ts":"2017-04-24 18:28:13","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:30:02","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:31:09","caller":"controllers/domainController.go:159","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 18:31:16","caller":"controllers/domainController.go:159","msg":"as_of_date_domain_status_check"}
+{"level":"error","ts":"2017-04-24 18:31:27","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_mode"}
+{"level":"error","ts":"2017-04-24 19:18:21","caller":"models/orgModels.go:199","msg":"Error 1062: Duplicate entry 'demo_join_234fda' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-24 19:18:21","caller":"controllers/orgController.go:609","msg":"上传机构信息失败,机构号是:234fda,机构名称是:攀枝花市分行"}
+{"level":"error","ts":"2017-04-24 19:18:47","caller":"controllers/orgController.go:245","msg":"error_org_up_id_complex"}
+{"level":"error","ts":"2017-04-24 19:18:59","caller":"controllers/orgController.go:245","msg":"error_org_up_id_complex"}
+{"level":"error","ts":"2017-04-24 19:19:04","caller":"controllers/orgController.go:317","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 19:19:10","caller":"controllers/orgController.go:317","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 19:19:54","caller":"controllers/orgController.go:317","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 19:20:25","caller":"controllers/orgController.go:317","msg":"as_of_date_domain_id_check"}
+{"level":"error","ts":"2017-04-24 19:21:25","caller":"controllers/orgController.go:317","msg":"error_org_id_format"}
+{"level":"error","ts":"2017-04-24 20:22:04","caller":"controllers/userControllers.go:165","msg":"error_user_id_check"}
+{"level":"error","ts":"2017-04-24 20:22:08","caller":"controllers/userControllers.go:165","msg":"error_user_name_check"}
+{"level":"error","ts":"2017-04-24 20:22:11","caller":"controllers/userControllers.go:165","msg":"error_user_passwd_check"}
+{"level":"error","ts":"2017-04-24 20:22:14","caller":"controllers/userControllers.go:165","msg":"error_passwd_empty"}
+{"level":"error","ts":"2017-04-24 20:22:17","caller":"controllers/userControllers.go:165","msg":"error_user_email_check"}
+{"level":"error","ts":"2017-04-24 20:22:20","caller":"controllers/userControllers.go:165","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 20:22:22","caller":"controllers/userControllers.go:165","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 20:44:15","caller":"controllers/userControllers.go:168","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 20:44:48","caller":"controllers/userControllers.go:168","msg":"error_user_id_check"}
+{"level":"error","ts":"2017-04-24 20:45:00","caller":"controllers/userControllers.go:168","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 20:45:04","caller":"controllers/userControllers.go:168","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:02:56","caller":"controllers/userControllers.go:167","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:02:59","caller":"controllers/userControllers.go:167","msg":"error_user_email_check"}
+{"level":"error","ts":"2017-04-24 21:03:01","caller":"controllers/userControllers.go:167","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 21:03:03","caller":"controllers/userControllers.go:167","msg":"error_user_role_org"}
+{"level":"error","ts":"2017-04-24 21:03:12","caller":"controllers/userControllers.go:167","msg":"error_user_name_check"}
+{"level":"error","ts":"2017-04-24 21:03:30","caller":"controllers/userControllers.go:410","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:03:34","caller":"controllers/userControllers.go:410","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:03:40","caller":"controllers/userControllers.go:410","msg":"error_passwd_short"}
+{"level":"error","ts":"2017-04-24 21:03:45","caller":"controllers/userControllers.go:410","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:05:11","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 21:05:14","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 21:05:17","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 21:05:19","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 21:07:43","caller":"models/domainModels.go:150","msg":"Error 1451: Cannot delete or update a parent row: a foreign key constraint fails (`test`.`sys_org_info`, CONSTRAINT `fk_sys_org_info_01` FOREIGN KEY (`domain_id`) REFERENCES `sys_domain_info` (`domain_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)"}
+{"level":"error","ts":"2017-04-24 21:39:45","caller":"controllers/roleControllers.go:168","msg":"error_role_status"}
+{"level":"info","ts":"2017-04-24 21:39:51","caller":"models/roleModels.go:122","msg":"delete role info successfully. role id is :mas_join_4"}
+{"level":"error","ts":"2017-04-24 21:39:55","caller":"controllers/roleControllers.go:168","msg":"error_role_status"}
+{"level":"error","ts":"2017-04-24 21:40:06","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/resource/rights"}
+{"level":"info","ts":"2017-04-24 21:40:11","caller":"models/roleModels.go:122","msg":"delete role info successfully. role id is :mas_join_234"}
+{"level":"error","ts":"2017-04-24 21:50:55","caller":"controllers/roleControllers.go:168","msg":"error_role_desc_empty"}
+{"level":"error","ts":"2017-04-24 21:50:57","caller":"controllers/roleControllers.go:168","msg":"error_role_status"}
+{"level":"info","ts":"2017-04-24 21:51:03","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_1245435"}
+{"level":"error","ts":"2017-04-24 21:51:07","caller":"controllers/roleControllers.go:280","msg":"error_role_id_format"}
+{"level":"info","ts":"2017-04-24 21:51:50","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_43234"}
+{"level":"error","ts":"2017-04-24 21:51:55","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/resource/rights"}
+{"level":"error","ts":"2017-04-24 21:52:00","caller":"controllers/roleControllers.go:168","msg":"error_role_desc_empty"}
+{"level":"error","ts":"2017-04-24 21:52:02","caller":"controllers/roleControllers.go:168","msg":"error_role_status"}
+{"level":"info","ts":"2017-04-24 21:52:07","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_3123"}
+{"level":"info","ts":"2017-04-24 21:52:10","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_3232"}
+{"level":"error","ts":"2017-04-24 21:53:20","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-24 21:55:25","caller":"controllers/userControllers.go:410","msg":"error_passwd_confirm_failed"}
+{"level":"error","ts":"2017-04-24 21:55:27","caller":"controllers/userControllers.go:410","msg":"error_passwd_confirm_failed"}
+{"level":"info","ts":"2017-04-24 21:55:50","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_54325653"}
+{"level":"error","ts":"2017-04-24 21:56:01","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/resource/rights"}
+{"level":"error","ts":"2017-04-24 21:56:04","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/resource/rights"}
+{"level":"info","ts":"2017-04-24 21:56:08","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_5434325"}
+{"level":"info","ts":"2017-04-24 21:56:21","caller":"models/roleModels.go:112","msg":"delete role info successfully. role id is :mas_join_653432"}
+{"level":"error","ts":"2017-04-24 21:56:42","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/user/roles/auth"}
+{"level":"error","ts":"2017-04-24 21:56:46","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/user/roles/auth"}
+{"level":"error","ts":"2017-04-24 21:56:48","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/user/roles/auth"}
+{"level":"error","ts":"2017-04-24 21:56:50","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/HandleLogsPage"}
+{"level":"error","ts":"2017-04-24 21:56:51","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/HandleLogsPage"}
+{"level":"error","ts":"2017-04-24 21:56:53","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/HandleLogsPage"}
+{"level":"error","ts":"2017-04-24 21:56:55","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/HandleLogsPage"}
+{"level":"error","ts":"2017-04-24 21:56:58","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/HandleLogsPage"}
+{"level":"error","ts":"2017-04-24 21:57:09","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/page"}
+{"level":"error","ts":"2017-04-24 21:57:10","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/role/page"}
+{"level":"error","ts":"2017-04-24 21:57:11","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :demoapi is :/v1/auth/domain/page"}
+{"level":"error","ts":"2017-04-24 23:27:29","caller":"controllers/domainShareController.go:254","msg":"as_of_date_domain_target"}
+{"level":"debug","ts":"2017-04-24 23:37:27","caller":"controller/curveManageController.go:35","msg":"vertex_root"}
+{"level":"error","ts":"2017-04-24 23:50:11","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-24 23:50:11","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-24 23:50:11","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-24 23:50:13","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 09:27:47","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:27:48","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:27:48","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:27:48","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:27:49","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:28:48","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:28:53","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:29:12","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:30:20","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:30:39","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:13","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:18","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:24","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:35","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:40","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:45","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:31:50","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:32:17","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:32:22","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:33:33","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:33:38","caller":"controller/departmentController.go:119","msg":"forbid"}
+{"level":"error","ts":"2017-04-25 09:39:24","caller":"controller/departmentController.go:342","msg":"事业部/业务条线编码不能为空"}
+{"level":"error","ts":"2017-04-25 09:40:38","caller":"model/departmentModel.go:101","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 09:40:38","caller":"controller/departmentController.go:342","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 09:41:05","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 09:41:05","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 09:41:05","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 09:41:08","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 09:42:17","caller":"model/departmentModel.go:101","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 09:42:17","caller":"controller/departmentController.go:342","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 10:00:13","caller":"model/departmentModel.go:101","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 10:00:13","caller":"controller/departmentController.go:342","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 10:01:28","caller":"model/departmentModel.go:101","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 10:01:28","caller":"controller/departmentController.go:342","msg":"Error 1205: Lock wait timeout exceeded; try restarting transaction"}
+{"level":"error","ts":"2017-04-25 10:17:38","caller":"model/departmentModel.go:101","msg":"Error 1062: Duplicate entry 'mas_join_root' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 10:17:38","caller":"controller/departmentController.go:342","msg":"Error 1062: Duplicate entry 'mas_join_root' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 10:21:46","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:21:52","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:01","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:07","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:07","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:07","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:08","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:15","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:22:39","caller":"controller/productController.go:92","msg":"产品编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 10:26:57","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:27:58","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:02","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:12","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:13","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:35","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:35","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:28:36","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:29:24","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:29:39","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:44","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:44","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:45","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:45","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:48","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:49","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:54","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:55","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:56","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:30:56","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 10:40:00","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:00","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:00","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:01","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:05","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:05","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 10:40:05","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 11:01:05","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 11:01:06","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 11:01:06","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 11:01:06","caller":"controller/productController.go:123","msg":"禁止将现在下级产品设置成自己的上级产品"}
+{"level":"error","ts":"2017-04-25 11:21:53","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:21:54","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:21:54","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:22:02","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:22:08","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:22:09","caller":"controller/glaccountController.go:91","msg":"禁止将上级科目设置成自己的下级科目"}
+{"level":"error","ts":"2017-04-25 11:22:17","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:17","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:18","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:18","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:26","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:27","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 11:22:27","caller":"controller/glaccountController.go:91","msg":"Error 1062: Duplicate entry 'mas_join_66010101' for key 'PRIMARY'"}
+{"level":"error","ts":"2017-04-25 14:04:24","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:04:24","caller":"controller/responsibility_center.go:69","msg":"您没有权限访问域 432143"}
+{"level":"error","ts":"2017-04-25 14:09:52","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:09:59","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:11:55","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:12:01","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:12:16","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:12:49","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:13:56","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:16:05","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:16:16","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:16:22","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:18:01","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:18:08","caller":"hrpc/domain.go:19","msg":"sql: no rows in result set"}
+{"level":"error","ts":"2017-04-25 14:22:52","caller":"controller/staticRadioConfigController.go:111","msg":"请选择分摊类型"}
+{"level":"error","ts":"2017-04-25 14:54:34","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/download"}
+{"level":"error","ts":"2017-04-25 14:55:13","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 14:55:52","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 14:59:32","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:00:58","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:01:45","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:01:55","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:02:05","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:02:43","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:03:50","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/get"}
+{"level":"error","ts":"2017-04-25 15:41:01","caller":"hrpc/auth.go:30","msg":"insufficient privilegesuser id is :caadminapi is :/v1/auth/resource/org/insert"}
+{"level":"error","ts":"2017-04-25 15:42:11","caller":"controller/amartRulesController.go:116","msg":"规则编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 15:42:21","caller":"controller/amartRulesController.go:116","msg":"规则名称不能为空"}
+{"level":"error","ts":"2017-04-25 15:42:24","caller":"controller/amartRulesController.go:116","msg":"请选择费用摊出方"}
+{"level":"error","ts":"2017-04-25 15:42:28","caller":"controller/amartRulesController.go:116","msg":"请选择成本类型"}
+{"level":"error","ts":"2017-04-25 15:42:31","caller":"controller/amartRulesController.go:116","msg":"请选择费用方向信息"}
+{"level":"error","ts":"2017-04-25 15:42:35","caller":"controller/amartRulesController.go:116","msg":"请选择分摊驱动方式"}
+{"level":"error","ts":"2017-04-25 15:45:30","caller":"controller/amartRulesController.go:116","msg":"规则编码必须由1-30位字母,数字组成"}
+{"level":"error","ts":"2017-04-25 15:45:34","caller":"controller/amartRulesController.go:116","msg":"请选择费用摊出方"}
+{"level":"error","ts":"2017-04-25 15:45:37","caller":"controller/amartRulesController.go:116","msg":"请选择成本类型"}
+{"level":"error","ts":"2017-04-25 15:45:40","caller":"controller/amartRulesController.go:116","msg":"请选择费用方向信息"}
+{"level":"error","ts":"2017-04-25 15:45:42","caller":"controller/amartRulesController.go:116","msg":"动因驱动分摊模式中,请选择分摊级别"}
+{"level":"error","ts":"2017-04-25 15:45:49","caller":"controller/amartRulesController.go:116","msg":"动因驱动分摊模式中,请选择费用接收机构"}
+{"level":"error","ts":"2017-04-25 15:45:52","caller":"controller/amartRulesController.go:116","msg":"动因驱动分摊模式中,请选择费用接收方向"}
+{"level":"error","ts":"2017-04-25 16:08:47","caller":"controller/amartRulesController.go:144","msg":"动因驱动分摊模式中,请选择分摊级别"}
+{"level":"debug","ts":"2017-04-25 16:59:11","caller":"controller/responsibility_center.go:431","msg":"masmas_join_129310101"}
+{"level":"error","ts":"2017-04-25 17:30:15","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 17:30:20","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 17:30:44","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 17:30:46","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 17:45:52","caller":"controller/amartRulesController.go:113","msg":"请选择分摊驱动方式"}
+{"level":"error","ts":"2017-04-25 20:07:38","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-04-25 20:07:43","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
