@@ -563,3 +563,5 @@
 {"level":"error","ts":"2017-04-25 17:45:52","caller":"controller/amartRulesController.go:113","msg":"请选择分摊驱动方式"}
 {"level":"error","ts":"2017-04-25 20:07:38","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
 {"level":"error","ts":"2017-04-25 20:07:43","caller":"hret/recover.go:10","msg":"system generator panic.runtime error: invalid memory address or nil pointer dereference"}
+{"level":"error","ts":"2017-06-30 00:14:18","caller":"i18n/i18n.go:29","msg":"open apps\\mas\\ca\\views\\i18n\\zh-cn.catwo.yaml: The system cannot find the path specified."}
+{"level":"error","ts":"2017-06-30 00:14:18","caller":"i18n/i18n.go:29","msg":"open apps\\mas\\ca\\views\\i18n\\en-us.catwo.yaml: The system cannot find the path specified."}
