@@ -2,15 +2,15 @@
 
 获取完整前后台源代码,请跳转到:
 
-[golang 版本：https://github.com/hzwy23/asofdate](https://github.com/hzwy23/asofdate) 
+[golang 版本：https://github.com/hzwy23/asofdate](https://github.com/asofdate/hauth) 
 
-[Java 版本：https://github.com/hzwy23/asofdate-etl](https://github.com/hzwy23/asofdate-etl) 
+[Java 版本：https://github.com/hzwy23/asofdate-etl](https://github.com/asofdate/hauth-java) 
 
 ## 项目介绍
 
-这部分代码是asofdate项目的可执行部分,asofdate包含了后台golang开发的源代码
+这部分代码是asofdate hauth项目的可执行部分,asofdate hauth包含了后台golang开发的源代码
 
-hauth是asofdate编译好后的可执行部分, 这是一个完整的前端部分.
+hauth-ui是asofdate hauth编译好后的可执行部分, 这是一个完整的前端部分.
 
 所以, 如果不想使用golang的后台,可以使用别的语言实现hauth的API, 系统所有的API,在登录系统后,
 
