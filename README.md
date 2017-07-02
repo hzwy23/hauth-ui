@@ -64,4 +64,4 @@ asofdate.exe
 
 ## 温馨提示:
 
-获取完整源代码,请移步: [https://github.com/hzwy23/asofdate](https://github.com/hzwy23/asofdate)
+获取完整源代码,请移步: [https://github.com/asofdate/hauth](https://github.com/asofdate/hauth)
