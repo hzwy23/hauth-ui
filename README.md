@@ -2,9 +2,9 @@
 
 获取完整前后台源代码,请跳转到:
 
-[golang 版本：https://github.com/hzwy23/asofdate](https://github.com/asofdate/hauth) 
+[golang 版本：https://github.com/hzwy23/asofdate](https://github.com/hzwy23/hauth) 
 
-[Java 版本：https://github.com/hzwy23/asofdate-etl](https://github.com/asofdate/hauth-java) 
+[Java 版本：https://github.com/hzwy23/asofdate-etl](https://github.com/hzwy23/hauth-java) 
 
 ## 项目介绍
 
@@ -64,4 +64,4 @@ asofdate.exe
 
 ## 温馨提示:
 
-获取完整源代码,请移步: [https://github.com/asofdate/hauth](https://github.com/asofdate/hauth)
+获取完整源代码,请移步: [https://github.com/hzwy23/hauth](https://github.com/hzwy23/hauth)
